@@ -13,24 +13,30 @@
                         <label>Jenis indeKos</label>
                         <select name="" id="" class="form-control">
                             <option value="">Pilih salah satu</option>
-                            <option value="0">Laki-laki</option>
-                            <option value="1">Perempuan</option>
+                            <option value="1">Putra</option>
+                            <option value="2">putri</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Harga indeKos</label>
                         <select name="" id="" class="form-control">
                         <option value="" >Pilih salah satu</option>
-                            <option value="0">Laki-laki</option>
-                            <option value="1">Perempuan</option>
+                            <option value="1">200 - 300</option>
+                            <option value="2">300 - 350</option>
+                            <option value="3">350 - 400</option>
+                            <option value="4">460 - 500</option>
+                            <option value="5">>500</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Jarak indeKos</label>
                         <select name="" id="" class="form-control">
                         <option value="">Pilih salah satu</option>
-                            <option value="0">Laki-laki</option>
-                            <option value="1">Perempuan</option>
+                            <option value="1">150m - 350m</option>
+                            <option value="2">360m - 450m</option>
+                            <option value="3">460m - 850m</option>
+                            <option value="4">960m - 1km</option>
+                            <option value="5">1km</option>
                         </select>
                     </div>
                     <div class="form-group">
