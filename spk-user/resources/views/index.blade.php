@@ -19,15 +19,15 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="{{  asset('homespace/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('homespace/fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('homespace/fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/aos.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{  asset('homespace/css/style.css') }}">
 
   <title>Homespace Free HTML Template by Untree.co</title>
 </head>
@@ -99,7 +99,7 @@
 
     <div class="untree_co_slider">
       <div class="item">
-        <img src="images/property_1-min.jpg" alt="Image" class="img-fluid">
+        <img src="{{ asset('homespace/images/property_1-min.jpg') }}" alt="Image" class="img-fluid">
 
         <div class="property-contents">
           <strong class="current-price text-secondary">$999,000</strong>
@@ -130,7 +130,7 @@
 
       </div> 
       <div class="item">
-        <img src="images/property_2-min.jpg" alt="Image" class="img-fluid">
+        <img src="{{ asset('homespace/images/property_2-min.jpg') }}" alt="Image" class="img-fluid">
 
         <div class="property-contents">
           <strong class="current-price text-secondary">$999,000</strong>
@@ -160,103 +160,13 @@
         </div>
       </div> 
       <div class="item">
-        <img src="images/property_3-min.jpg" alt="Image" class="img-fluid">
+        <img src="{{ asset('homespace/images/property_3-min.jpg') }}" alt="Image" class="img-fluid">
 
         <div class="property-contents">
           <strong class="current-price text-secondary">$999,000</strong>
           <span class="old-price">$1,000,299</span>
           <h2>
             <a href="#"><span>2 Zwar Place, Florey</span></a>
-          </h2>
-        </div>
-
-        <div class="property_details">
-
-          <ul class="list-unstyled specs">
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bathtub"></span>
-              <strong>2</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bed"></span>
-              <strong>4</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-house-size"></span>
-              <strong>120<sup>2</sup></strong>
-            </li>
-          </ul>
-
-        </div>
-      </div> 
-      <div class="item">
-        <img src="images/property_1-min.jpg" alt="Image" class="img-fluid">
-
-        <div class="property-contents">
-          <strong class="current-price text-secondary">$999,000</strong>
-          <span class="old-price">$1,000,299</span>
-          <h2>
-            <a href="#"><span>2 Zwar Place, Florey</span></a>
-          </h2>
-        </div>
-
-        <div class="property_details">
-
-          <ul class="list-unstyled specs">
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bathtub"></span>
-              <strong>2</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bed"></span>
-              <strong>4</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-house-size"></span>
-              <strong>120<sup>2</sup></strong>
-            </li>
-          </ul>
-
-        </div>
-      </div> 
-      <div class="item">
-        <img src="images/property_2-min.jpg" alt="Image" class="img-fluid">
-
-        <div class="property-contents">
-          <strong class="current-price text-secondary">$999,000</strong>
-          <span class="old-price">$1,000,299</span>
-          <h2>
-            <a href="#"><span>62/1 Braybrooke Street, Bruce</span></a>
-          </h2>
-        </div>
-
-        <div class="property_details">
-
-          <ul class="list-unstyled specs">
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bathtub"></span>
-              <strong>2</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-bed"></span>
-              <strong>4</strong>
-            </li>
-            <li class="d-inline-flex align-items-center">
-              <span class="icon-wrap flaticon-house-size"></span>
-              <strong>120<sup>2</sup></strong>
-            </li>
-          </ul>
-
-        </div>
-      </div> 
-      <div class="item">
-        <img src="images/property_3-min.jpg" alt="Image" class="img-fluid">
-
-        <div class="property-contents">
-          <strong class="current-price text-secondary">$999,000</strong>
-          <span class="old-price">$1,000,299</span>
-          <h2>
-            <a href="#"><span>32/13-15 Sturt Avenue, Griffith</span></a>
           </h2>
         </div>
 
@@ -826,17 +736,17 @@
   </div>
 </div>
 
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.fancybox.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jarallax.min.js"></script>
+<script src="{{ asset('homespace/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('homespace/js/popper.min.js') }}"></script>
+<script src="{{ asset('homespace/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('homespace/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('homespace/js/aos.js') }}"></script>
+<script src="{{ asset('homespace/js/jarallax.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ asset('homespace/js/custom.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 </body>
 
