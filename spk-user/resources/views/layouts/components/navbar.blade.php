@@ -22,7 +22,7 @@
           </li>
           <li><a href="{{ route('recomendation') }}">Rekomendasi</a></li>
           <li><a href="rent.html">Rent</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="{{ route('about') }}">About</a></li>
           <li><a href="contact.html">Contact Us</a></li>
 
           <li><a href="signup.html">Sign up</a></li> 

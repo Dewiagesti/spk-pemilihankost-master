@@ -70,6 +70,8 @@
 <script src="{{ asset('homespace/js/jarallax.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset('homespace/js/custom.js') }}"></script>
+
+@stack('scripts')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 </body>
 

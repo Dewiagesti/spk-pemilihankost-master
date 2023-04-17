@@ -14,7 +14,7 @@
                         <select name="" id="" class="form-control">
                             <option value="">Pilih salah satu</option>
                             <option value="1">Putra</option>
-                            <option value="2">putri</option>
+                            <option value="2">Putri</option>
                         </select>
                     </div>
                     <div class="form-group">
