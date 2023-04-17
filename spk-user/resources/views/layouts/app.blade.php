@@ -7,6 +7,7 @@
   <meta name="author" content="Untree.co">
   <link rel="shortcut icon" href="favicon.png">
 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
 
@@ -22,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   <link rel="stylesheet" href="{{  asset('homespace/css/style.css') }}">
 
-  <title>Homespace Free HTML Template by Untree.co</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 
 <body>
