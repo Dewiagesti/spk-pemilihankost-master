@@ -40,12 +40,18 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 2,
+            'no_hp' => $request->no_hp,
+            'longitude' => $request->longitude,
+            'latitude' => $request->latitude,
+            'alamat' => $request->alamat
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return to_route('home');
+        // return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Basic Datatable</h4>
+                <h4 class="card-title">Datatable Kost</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -17,7 +17,7 @@
                                 <th>Lebar Kamar</th>
                                 <th>Keamanan</th>
                                 <th>Kebersihan</th>
-                                <th>Option</th>
+                                {{-- <th>Option</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -31,9 +31,9 @@
                                     <td>{{ $kost->lebar_kamar }}</td>
                                     <td>{{ $kost->keamanan }}</td>
                                     <td>{{ $kost->kebersihan }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="javascript:void(0)" class="btn btn-primary">Edit</a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

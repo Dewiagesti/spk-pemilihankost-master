@@ -15,7 +15,7 @@ use App\Http\Controllers\RecomendationController;
 
 
 Route::get('/', function () {
-    return view('home');
+    return view('home')->name('home');
 });
 
 // Page not Auth alias Landing page

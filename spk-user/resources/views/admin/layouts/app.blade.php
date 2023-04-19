@@ -74,7 +74,7 @@
 
         <div class="content-body">
             <div class="container-fluid">
-                <div class="row page-titles mx-0">
+                {{-- <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
                             <h4>Hi, welcome back!</h4>
@@ -87,7 +87,7 @@
                             <li class="breadcrumb-item active"><a href="javascript:void(0)">Blank</a></li>
                         </ol>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     {{ $slot }}
                 </div>

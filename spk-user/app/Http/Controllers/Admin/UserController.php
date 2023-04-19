@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function __invoke()
     {
-        $users = User::all();
+        $users = User::where('role', 2)->get();
         return view('admin.user.index', compact('users'));
     }
 }
