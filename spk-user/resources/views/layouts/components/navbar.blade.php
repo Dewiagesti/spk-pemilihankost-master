@@ -25,7 +25,7 @@
           <li><a href="{{ route('about') }}">About</a></li>
           <li><a href="contact.html">Contact Us</a></li>
 
-          <li><a href="signup.html">Sign up</a></li> 
+          <li><a href="{{ route('register') }}">Sign up</a></li> 
           <li class="cta-button active"><a href="{{ route('login') }}">Login</a></li>
 
         </ul>

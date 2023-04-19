@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('no_hp',15)->nullable();
             $table->string('longitude',20)->nullable();
             $table->string('latitude',20)->nullable();
-            $table->enum('role',['admin','mitra', 'user']);
+            $table->enum('role',[1, 2])->comment('1: admin, 2: mitra');
             $table->rememberToken();
             $table->timestamps();
         });
