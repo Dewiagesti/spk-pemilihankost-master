@@ -23,6 +23,11 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    public function createMitra(): View
+    {
+        return view('auth.mitra-register');
+    }
+
     /**
      * Handle an incoming registration request.
      *
@@ -36,22 +41,26 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        $data = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 2,
             'no_hp' => $request->no_hp,
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
             'alamat' => $request->alamat
-        ]);
+        ];
+        
+        ($request->longitude == null && $request->latitude == null) ? $data['role'] = 3 : $data['role'] = 2;
+
+        $user = User::create($data);
+      
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return to_route('home');
+        return to_route('login');
         // return redirect(RouteServiceProvider::HOME);
     }
 }

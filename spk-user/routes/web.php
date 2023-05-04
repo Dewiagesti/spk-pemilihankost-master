@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\KostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Mitra\KostController as MitraKostController;
 use App\Http\Controllers\RecomendationController;
 
 
@@ -28,10 +29,18 @@ Route::prefix('admin')
     ->middleware(['auth', 'verified'])->group(function () {
         Route::view('/dashboard','admin.dashboard')->name('dashboard');
         Route::get('/users', UserController::class)->name('user.index');
-        Route::resource('kost', KostController::class);
+        Route::get('kost', KostController::class)->name('admin.kost');
        
 });
 
+// Mitra page
+Route::prefix('mitra')
+    ->name('mitra.')
+    ->middleware(['auth', 'verified'])->group(function () {
+        Route::view('/dashboard','mitra.dashboard')->name('mitra.dashboard');
+        Route::resource('kost', MitraKostController::class)->only('index','store', 'edit');
+        Route::get('/kost/{id}', [MitraKostController::class, 'destroy']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

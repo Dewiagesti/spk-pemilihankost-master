@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nama_kost',75);
             $table->enum('jenis_kost',['Putra', 'Putri']);
             $table->string('alamat',150);
-            $table->string('latitude', 15)->nullable();
-            $table->string('longitude', 15)->nullable();
+            $table->string('latitude', 150)->nullable();
+            $table->string('longitude', 150)->nullable();
             $table->string('harga', 20);
             $table->string('fasilitas');
             $table->string('panjang_kamar', 5);

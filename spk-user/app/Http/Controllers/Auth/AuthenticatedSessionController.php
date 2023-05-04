@@ -20,6 +20,14 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+     /**
+     * Display the login view.
+     */
+    public function loginMitra(): View
+    {
+        return view('auth.mitra-login');
+    }
+
     /**
      * Handle an incoming authentication request.
      */
@@ -28,8 +36,16 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        if (auth()->check()) {
+            if (Auth::user()->role == 1) {
+                return redirect()->intended('/admin/dashboard');
+            }elseif (Auth::user()->role == 2) {
+                return redirect()->intended('/mitra/dashboard');
+            }elseif (Auth::user()->role == 3){
+                return redirect()->intended('/');
+            }
+        }
     }
 
     /**

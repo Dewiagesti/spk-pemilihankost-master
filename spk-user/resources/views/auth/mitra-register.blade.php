@@ -46,6 +46,19 @@
             <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
         </div>
 
+        {{-- Longitude --}}
+        <div class="mt-4">
+            <x-input-label for="longitude" :value="__('Longitude')" />
+            <x-text-input id="longitude" class="block mt-1 w-full" type="text" name="longitude" :value="old('longitude')" required />
+            <x-input-error :messages="$errors->get('longitude')" class="mt-2" />
+        </div>
+
+        {{-- Latitude --}}
+        <div class="mt-4">
+            <x-input-label for="latitude" :value="__('Latitude')" />
+            <x-text-input id="latitude" class="block mt-1 w-full" type="text" name="latitude" :value="old('latitude')" required />
+            <x-input-error :messages="$errors->get('latitude')" class="mt-2" />
+        </div>
 
         {{-- Latitude --}}
         <div class="mt-4">
