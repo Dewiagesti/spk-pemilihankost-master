@@ -60,7 +60,13 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return to_route('login');
-        // return redirect(RouteServiceProvider::HOME);
+        if (Auth::check()) {
+            if (Auth::user()->role == 2) {
+                return redirect()->intended('/mitra/login');
+            }else {
+                return redirect()->intended('/login');
+            }
+        }
+        // return redirect()->intended();
     }
 }

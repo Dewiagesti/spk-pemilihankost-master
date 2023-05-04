@@ -20,7 +20,6 @@
             </li>
           @endauth
           @guest
-            <li><a href="{{ route('register') }}">Sign up</a></li> 
             <li class="cta-button active">
               <a href="javascript:void(0)"  data-toggle="modal" data-target="#exampleModalCenter">Login</a>
             </li>
@@ -41,7 +40,7 @@
                 <p>Saya ingin masuk sebagai</p>
                 
                 <div class="card">
-                  <a href="{{ route('login') }}" class="d-flex justify-content-beetwen flex-wrap align-items-center">
+                  <a href="{{ route('register') }}" class="d-flex justify-content-beetwen flex-wrap align-items-center">
                       <img src="https://picsum.photos/500/500" alt="" class="" width="100vh">
                       <p class="ml-4 font-weight-bold">
                         Pencari Kos
@@ -50,7 +49,7 @@
                 </div>
                 <br>
                 <div class="card">
-                  <a href="{{ route('mitra.login') }}" class="d-flex justify-content-beetwen flex-wrap align-items-center">
+                  <a href="{{ route('mitra.register') }}" class="d-flex justify-content-beetwen flex-wrap align-items-center">
                     <img src="https://picsum.photos/seed/picsum/500/500" alt="" width="100vh">
                     <p class="ml-4 font-weight-bold">
                       Mitra Kos

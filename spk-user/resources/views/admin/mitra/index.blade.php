@@ -13,15 +13,19 @@
                                 <th>Email</th>
                                 <th>Alamat</th>
                                 <th>No Hp</th>
+                                <th>Longitude</th>
+                                <th>Latitude</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($userRoleMitra as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->alamat }}</td>
                                     <td>{{ $user->no_hp }}</td>
+                                    <td>{{ $user->longitude }}</td>
+                                    <td>{{ $user->latitude }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __invoke()
+    public function users()
     {
-        $users = User::where('role', 2)->get();
+        $users = User::ofRole(3)->get();
         return view('admin.user.index', compact('users'));
+    }
+
+    public function mitra()
+    {
+        $userRoleMitra = User::ofRole(2)->get();
+        return view('admin.mitra.index', compact('userRoleMitra'));
     }
 }

@@ -16,6 +16,7 @@
                 <ul aria-expanded="false">
             @if(Auth::user()->role == 1)
                     <li><a href="{{ route('user.index') }}">Users</a></li>
+                    <li><a href="{{ route('mitra.index') }}">Mitra</a></li>
                     <li><a href="{{ route('admin.kost') }}">Kost</a></li>
                 </ul>
             </li>   
