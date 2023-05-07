@@ -26,7 +26,7 @@ Route::get('/rekomendasi', [RecomendationController::class, 'index'])->name('rec
 
 // admin page
 Route::prefix('admin')
-    ->middleware(['auth', 'verified'])->group(function () {
+    ->middleware(['auth', 'verified', 'role:1'])->group(function () {
         Route::view('/dashboard','admin.dashboard')->name('dashboard');
         Route::get('/users', [UserController::class, 'users'])->name('user.index');
         Route::get('/mitra', [UserController::class, 'mitra'])->name('mitra.index');
@@ -37,7 +37,7 @@ Route::prefix('admin')
 // Mitra page
 Route::prefix('mitra')
     ->name('mitra.')
-    ->middleware(['auth', 'verified'])->group(function () {
+    ->middleware(['auth', 'verified', 'role:2'])->group(function () {
         Route::view('/dashboard','mitra.dashboard')->name('mitra.dashboard');
         Route::resource('kost', MitraKostController::class)->only('index','store', 'edit');
         Route::get('/kost/{id}', [MitraKostController::class, 'destroy']);

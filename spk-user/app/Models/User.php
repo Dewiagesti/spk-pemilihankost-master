@@ -55,4 +55,9 @@ class User extends Authenticatable
    {
      $builder->where('role', $type);
    }
+
+   public function hasRole($role)
+   {
+       return $this->role == $role;
+   }
 }
