@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mitra;
 use App\Helpers\FileUpload;
 use App\Http\Controllers\Controller;
 use App\Models\Kost;
+use App\Services\AlternativeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,8 @@ class KostController extends Controller
      */
     public function index()
     {
-        $kostByUserMitra = Kost::where('mitra',Auth::user()->id)->first();
+        $kostByUserMitra = Kost::where('user_id',Auth::user()->id)->first();
+       
         return view('mitra.kost.index', compact('kostByUserMitra'));
     }
 
@@ -34,20 +36,20 @@ class KostController extends Controller
      */
     public function store(Request $request)
     {
-        $attr = $request->all();
-        $attr['longitude'] = Auth::user()->longitude;
-        $attr['latitude'] = Auth::user()->latitude;
-        $attr['mitra'] = Auth::user()->id;
-        $attr['gambar_kamar'] = FileUpload::uploadFile($request->file('gambar_kamar'), '/gambar-kamar');
-        $attr['gambar_kamar_mandi'] = FileUpload::uploadFile($request->file('gambar_kamar_mandi'), '/gambar-kamar-mandi');
-        $attr['gambar_tampak_depan'] = FileUpload::uploadFile($request->file('gambar_tampak_depan'), '/gambar-tampak-depan');
+  
+        AlternativeService::createAlternativeTable($request);
+        // $attr['longitude'] = Auth::user()->longitude;
+        // $attr['latitude'] = Auth::user()->latitude;
+        // $attr['mitra'] = Auth::user()->id;
+        // $attr['gambar_kamar'] = FileUpload::uploadFile($request->file('gambar_kamar'), '/gambar-kamar');
+        // $attr['gambar_kamar_mandi'] = FileUpload::uploadFile($request->file('gambar_kamar_mandi'), '/gambar-kamar-mandi');
+        // $attr['gambar_tampak_depan'] = FileUpload::uploadFile($request->file('gambar_tampak_depan'), '/gambar-tampak-depan');
 
-        Kost::create($attr);
 
-        return response()->json([
-            'status' => 200,
-            'message' =>'Data berhasil disimpan.'
-        ], 200);
+        // return response()->json([
+        //     'status' => 200,
+        //     'message' =>'Data berhasil disimpan.'
+        // ], 200);
     }
 
     /**

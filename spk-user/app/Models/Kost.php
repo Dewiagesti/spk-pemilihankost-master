@@ -10,19 +10,20 @@ class Kost extends Model
 {
     use HasFactory;
 
-    protected $table = 'kost';
+    protected $table = 'boarding_houses';
 
     protected $fillable = [
+        'user_id',
         'nama_kost', 
-        'jenis_kost', 
+        'jenis_kost',
+        'jarak', 
         'alamat', 
         'harga',
         'longitude',
         'latitude',
         'fasilitas',
         'mitra',
-        'panjang_kamar',
-        'lebar_kamar', 
+        'panjang_lebar_kamar', 
         'keamanan', 
         'kebersihan',
     ];

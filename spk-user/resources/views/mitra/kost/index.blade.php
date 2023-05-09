@@ -57,8 +57,19 @@
                                 <input type="text" id="price_kost" name="harga" class="form-control" placeholder="">
                             </div>  
                             <div class="form-group">
-                                <label>Panjang Kamar Kost</label>
-                                <input type="number" class="form-control" id="room_length" name="panjang_kamar" placeholder="">
+                                <label>Jarak Kost</label>
+                                <input type="text" id="price_kost" name="jarak" class="form-control" placeholder="">
+                            </div> 
+                            <div class="form-group">
+                                <label>Panjang dan lebar Kost</label>
+                                <select name="panjang_lebar_kamar" id="panjang_lebar_kamar" class="form-control" id="location">
+                                    <option value="0" selected disabled>Pilih</option>
+                                    <option value="2 x 3">2 x 3</option>
+                                    <option value="2,5 x 3">2,5 x 3</option>
+                                    <option value="2,7 x 2,7">2,7 x 2,7</option>
+                                    <option value="2,7 x 3">2,7 x 3</option>
+                                    <option value="3 x 3">3 x 3</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Keamanan Kost</label>
@@ -67,6 +78,8 @@
                                     <option value="Sangat Aman">Sangat Aman</option>
                                     <option value="Aman">Aman</option>
                                     <option value="Cukup Aman">Cukup Aman</option>
+                                    <option value="Kurang Aman">Kurang Aman</option>
+                                    <option value="Tidak Aman">Tidak Aman</option>
                                 </select>
                             </div>
                         </div>
@@ -84,12 +97,37 @@
                                 <input type="text" name="fasilitas" id="facility" class="form-control" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label>Lebar Kamar Kost</label>
-                                <input type="number" id="room_width" name="lebar_kamar" class="form-control" placeholder="">
+                                <label>Kebersihan Kost</label>
+                                <select name="kebersihan" id="security" class="form-control" id="cleanliness">
+                                    <option value="0" selected disabled>Pilih</option>
+                                    <option value="Tidak Bersih">Tidak Bersih</option>
+                                    <option value="Kurang Bersih">Kurang Bersih</option>
+                                    <option value="Cukup Bersih">Cukup Bersih</option>
+                                    <option value="Bersih">Bersih</option>
+                                    <option value="Sangat Bersih">Sangat Bersih</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Kebersihan Kost</label>
-                                <input type="text" class="form-control" id="cleanliness" name="kebersihan" placeholder="">
+                                <label>Lokasi Kost</label>
+                                <select name="lokasi" id="location" class="form-control" id="location">
+                                    <option value="0" selected disabled>Pilih</option>
+                                    <option value="Sangat Strategis">Sangat Strategis</option>
+                                    <option value="Strategis">Strategis</option>
+                                    <option value="Cukup Strategis">Cukup Strategis</option>
+                                    <option value="Kurang Strategis">Kurang Strategis</option>
+                                    <option value="Tidak Strategis">Tidak Strategis</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Daerah sekitar Kost</label>
+                                <select name="daerah_sekitar" id="location" class="form-control" id="location">
+                                    <option value="0" selected disabled>Pilih</option>
+                                    <option value="Dekat dengan kampus">Dekat dengan kampus</option>
+                                    <option value="Kurang Lebih dekat dengan kampus">Kurang Lebih dekat dengan kampus</option>
+                                    <option value="Dekat dengan Jalan Utama">Dekat dengan Jalan Utama</option>
+                                    <option value="Dekat dengan Pembelanjaan">Dekat dengan Pembelanjaan</option>
+                                    <option value="Jauh dari Kampus">Jauh dari Kampus</option>
+                                </select>
                             </div>
                         </div>
                     </div>  
