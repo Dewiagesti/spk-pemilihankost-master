@@ -26,6 +26,8 @@ class Kost extends Model
         'panjang_lebar_kamar', 
         'keamanan', 
         'kebersihan',
+        'lokasi',
+        'daerah_sekitar'
     ];
 
     /**
@@ -35,6 +37,6 @@ class Kost extends Model
      */
     public function user(): HasOne
     {
-        return $this->hasOne(User::class, 'mitra', 'local_key');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

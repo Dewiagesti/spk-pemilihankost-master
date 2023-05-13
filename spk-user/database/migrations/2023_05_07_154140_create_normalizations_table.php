@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('normalitations', function (Blueprint $table) {
+        Schema::create('normalizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kost_id')->constrained( 'boarding_houses');
             $table->float('harga');

@@ -6,13 +6,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\KostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Mitra\KostController as MitraKostController;
+use App\Http\Controllers\Mitra\NormalizationController;
 use App\Http\Controllers\RecomendationController;
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 
 
 Route::get('/', function () {
@@ -30,8 +25,8 @@ Route::prefix('admin')
         Route::view('/dashboard','admin.dashboard')->name('dashboard');
         Route::get('/users', [UserController::class, 'users'])->name('user.index');
         Route::get('/mitra', [UserController::class, 'mitra'])->name('mitra.index');
-        Route::get('kost', KostController::class)->name('admin.kost');
-       
+        Route::get('kost', [KostController::class, 'index'])->name('admin.kost');
+        Route::get('/kost/{id}', [KostController::class, 'show'])->name('admin.kost.show');     
 });
 
 // Mitra page
@@ -41,6 +36,7 @@ Route::prefix('mitra')
         Route::view('/dashboard','mitra.dashboard')->name('mitra.dashboard');
         Route::resource('kost', MitraKostController::class)->only('index','store', 'edit');
         Route::get('/kost/{id}', [MitraKostController::class, 'destroy']);
+        Route::get('/normalisasi', [NormalizationController::class, 'index'])->name('normalization.index');
 });
 
 Route::middleware('auth')->group(function () {

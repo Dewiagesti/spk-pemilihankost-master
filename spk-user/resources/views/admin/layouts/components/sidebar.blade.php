@@ -22,6 +22,7 @@
             </li>   
             @else
                     <li><a href="{{ route('mitra.kost.index') }}">Kost</a></li>
+                    <li><a href="{{ route('mitra.normalization.index') }}">Normalisasi</a></li>
                 </ul>
             </li> 
             @endif

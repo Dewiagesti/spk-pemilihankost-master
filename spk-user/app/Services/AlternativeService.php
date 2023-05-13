@@ -2,9 +2,13 @@
 
 namespace App\Services;
 
+use App\Models\Alternative;
+use App\Models\Kost;
+use App\Models\Normalization;
 use App\Models\User;
 use App\Utils\PriceRangeUtils;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AlternativeService 
@@ -19,11 +23,52 @@ class AlternativeService
 
     public static function createAlternativeTable(Request $request)
     {
-        $attr = $request->all();
-        dd($attr['fasilitas'] = static::facilityRequest(Str::replace(',',' ', $request)));
-        // dd($attr['keamanan'] = static::securityRequest($request));
-        // dd($attr['jarak'] = static::priceDistanceRequest($request));
-        // dd( $attr['harga'] = "hello");
+       
+        $createBoardingHouse = Kost::create([
+            'user_id'       => Auth::user()->id,
+            'nama_kost'     => request('nama_kost'),
+            'jenis_kost'    => request('jenis_kost'),
+            'alamat'        => request('alamat'),
+            'latitude'      => Auth::user()->latitude,
+            'longitude'     => Auth::user()->longitude,
+            'jarak'         => request('jarak'),
+            'harga'         => request('harga'),
+            'fasilitas'     => request('fasilitas'),
+            'panjang_lebar_kamar' => request('panjang_lebar_kamar'),
+            'keamanan'      => request('keamanan'),
+            'lokasi'        => request('lokasi'),
+            'kebersihan'    => request('kebersihan'),
+            'daerah_sekitar'=> request('daerah_sekitar'),
+        ]);
+
+        $createAlternative = Alternative::create([
+            'kost_id' => $createBoardingHouse->id,
+            'harga'         => static::priceRangeRequest($request),
+            'jarak'         => static::priceDistanceRequest($request),
+            'fasilitas'     => static::facilityRequest(str_replace(',',' ', $request->fasilitas)),
+            'lokasi'        => static::locationRequest($request),
+            'panjang_lebar_kamar' => static::roomSizeRequest($request),
+            'keamanan'      => static::securityRequest($request),
+            'kebersihan' => static::cleanlinessRequest($request),
+            'daerah_sekitar' => static::areaRequest($request)
+        ]);
+
+        foreach (Alternative::get() as $key ) {
+     
+            Normalization::updateOrCreate(
+                ['kost_id' => $key->kost_id],
+                [
+                    'harga' => $key->harga /  Alternative::max('harga'),
+                    'jarak' => $key->jarak / Alternative::max('jarak'),
+                    'fasilitas' => $key->fasilitas / Alternative::max('fasilitas'),
+                    'panjang_lebar_kamar' => $key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'),
+                    'keamanan' => Alternative::min('keamanan') / $key->keamanan,
+                    'kebersihan' => Alternative::min('kebersihan') / $key->kebersihan,
+                    'lokasi' => Alternative::min('lokasi') / $key->lokasi,
+                    'daerah_sekitar' => Alternative::min('daerah_sekitar') / $key->daerah_sekitar
+                ]
+            );
+        }
     }
     
     public static function facilityRequest($sentences)
@@ -43,6 +88,7 @@ class AlternativeService
             return $numberOfSentences;
     
     }
+
 
     public static function priceRangeRequest()
     {
@@ -127,7 +173,7 @@ class AlternativeService
 
     public static function cleanlinessRequest(Request $request)
     {
-        $reqCleanliness = $request->keamanan;
+        $reqCleanliness = $request->kebersihan;
 
         switch ($reqCleanliness) {
             case 'Tidak Bersih':
@@ -203,9 +249,9 @@ class AlternativeService
         }  
     }
 
-    public function areaRequest(Request $request)
+    public static function areaRequest(Request $request)
     {
-        $reqArea = $request->panjang_lebar_kamar;
+        $reqArea = $request->daerah_sekitar;
 
         switch ($reqArea) {
             case 'Dekat dengan kampus':

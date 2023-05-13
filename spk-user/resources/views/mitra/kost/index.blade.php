@@ -58,7 +58,7 @@
                             </div>  
                             <div class="form-group">
                                 <label>Jarak Kost</label>
-                                <input type="text" id="price_kost" name="jarak" class="form-control" placeholder="">
+                                <input type="number" id="distance" name="jarak" class="form-control" placeholder="">
                             </div> 
                             <div class="form-group">
                                 <label>Panjang dan lebar Kost</label>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kebersihan Kost</label>
-                                <select name="kebersihan" id="security" class="form-control" id="cleanliness">
+                                <select name="kebersihan" class="form-control" id="cleanliness">
                                     <option value="0" selected disabled>Pilih</option>
                                     <option value="Tidak Bersih">Tidak Bersih</option>
                                     <option value="Kurang Bersih">Kurang Bersih</option>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Lokasi Kost</label>
-                                <select name="lokasi" id="location" class="form-control" id="location">
+                                <select name="lokasi" id="location" class="form-control">
                                     <option value="0" selected disabled>Pilih</option>
                                     <option value="Sangat Strategis">Sangat Strategis</option>
                                     <option value="Strategis">Strategis</option>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Daerah sekitar Kost</label>
-                                <select name="daerah_sekitar" id="location" class="form-control" id="location">
+                                <select name="daerah_sekitar" id="area" class="form-control">
                                     <option value="0" selected disabled>Pilih</option>
                                     <option value="Dekat dengan kampus">Dekat dengan kampus</option>
                                     <option value="Kurang Lebih dekat dengan kampus">Kurang Lebih dekat dengan kampus</option>
@@ -152,7 +152,7 @@
                         <img src="" id="front_view_image" alt="Gambar Defaul">
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary" id="btn-submit">Submit</button>
+                        <button class="btn btn-primary" id="btn-submit" {{ ($kostByUserMitra == null) ? '' : 'disabled'  }}>Submit</button>
                     </div>
                 </form>
             </div>
@@ -173,6 +173,7 @@
                         success: function(response) {
                             alert(response.message);
                             $('#formCreate')[0].reset();
+                            location.reload();
                         },
                         error: function(xhr, status, error) {
                             console.log(xhr.responseText);
@@ -193,6 +194,9 @@
                             success: function(response) {
                                 alert(response.success);
                                 row.remove();
+                                setTimeout(function(){
+                                    $( "#mytable" ).load( "Halaman ini akan tereload" );
+                                }, 2000);
                             },
                             error: function(xhr, status, error) {
                                 console.log(xhr.responseText);
@@ -204,6 +208,7 @@
                 $('#myTable').on('click', '.edit-row', function (e) {
                     e.preventDefault();
                     var id =  $(this).data('id');
+                    $('#btn-submit').attr("disabled", false)
                     $.ajax({
                         type: 'GET',
                         url: '/mitra/kost/'+id+'/edit',
@@ -215,12 +220,14 @@
                             $('#name_kost').val(res.nama_kost)
                             $('#type').val(res.jenis_kost)
                             $('#price_kost').val(res.harga)
+                            $('#distance').val(res.jarak)
                             $('#facility').val(res.fasilitas)
-                            $('#room_length').val(res.panjang_kamar)
-                            $('#room_width').val(res.lebar_kamar)
+                            $('#panjang_lebar_kamar').val(res.panjang_lebar_kamar)
                             $('#cleanliness').val(res.kebersihan)
                             $('#security').val(res.keamanan)
-                            $('#address').text(res.alamat)
+                            $('#address').val(res.alamat)
+                            $('#location').val(res.lokasi)
+                            $('#area').val(res.lokasi)
                             $('#room_image').attr('src', res.gambar_kamar)
                             $('#bathroom_image').attr('src', res.gambar_kamar_mandi)
                             $('#front_view_image').attr('src', res.gambar_tampak_depan)

@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('alternatives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kost_id')->constrained( 'boarding_houses');
-            $table->float('harga');
-            $table->float('jarak');
-            $table->float('fasilitas');
-            $table->float('panjang_lebar_kamar');
-            $table->float('keamanan');
-            $table->float('kebersihan');
-            $table->float('lokasi');
-            $table->float('daerah_sekitar');
+            $table->integer('harga');
+            $table->integer('jarak');
+            $table->integer('fasilitas');
+            $table->integer('panjang_lebar_kamar');
+            $table->integer('keamanan');
+            $table->integer('kebersihan');
+            $table->integer('lokasi');
+            $table->integer('daerah_sekitar');
             $table->timestamps();
         });
     }
