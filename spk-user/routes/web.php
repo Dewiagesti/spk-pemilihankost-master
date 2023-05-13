@@ -14,6 +14,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+
 // Page not Auth alias Landing page
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/about/{id}/edit', [AboutController::class, 'detail']);

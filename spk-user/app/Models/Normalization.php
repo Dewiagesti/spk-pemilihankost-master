@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Normalization extends Model
 {
@@ -20,4 +21,9 @@ class Normalization extends Model
         'kebersihan',
         'daerah_sekitar'
     ];
+
+    public function kost(): HasOne
+    {
+        return $this->hasOne(Kost::class, 'id', 'kost_id');
+    }
 }

@@ -23,15 +23,15 @@
                         <tbody>
                             @foreach ($normalizations as $normalization)
                                 <tr>
-                                    <td>{{ $normalizations->kost_id }}</td>
-                                    <td>{{ $normalizations->harga }}</td>
-                                    <td>{{ $normalizations->jarak }}</td>
-                                    <td>{{ $normalizations->fasilitas }}</td>
-                                    <td>{{ $normalizations->panjang_lebar_kamar }}</td>
-                                    <td>{{ $normalizations->keamanan }}</td>
-                                    <td>{{ $normalizations->kebersihan }}</td>
-                                    <td>{{ $normalizations->lokasi }}</td>
-                                    <td>{{ $normalizations->daerah_sekitar }}</td>
+                                    <td>{{ $normalization->kost_id }}</td>
+                                    <td>{{ $normalization->harga }}</td>
+                                    <td>{{ $normalization->jarak }}</td>
+                                    <td>{{ $normalization->fasilitas }}</td>
+                                    <td>{{ $normalization->panjang_lebar_kamar }}</td>
+                                    <td>{{ $normalization->keamanan }}</td>
+                                    <td>{{ $normalization->kebersihan }}</td>
+                                    <td>{{ $normalization->lokasi }}</td>
+                                    <td>{{ $normalization->daerah_sekitar }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
