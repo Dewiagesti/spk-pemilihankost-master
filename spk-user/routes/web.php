@@ -24,7 +24,12 @@ Route::get('/rekomendasi', [RecomendationController::class, 'index'])->name('rec
 Route::prefix('admin')
     ->middleware(['auth', 'verified', 'role:1'])->group(function () {
         Route::view('/dashboard','admin.dashboard')->name('dashboard');
+        
         Route::get('/users', [UserController::class, 'users'])->name('user.index');
+        Route::get('/edit-mitra/{id}', [UserController::class, 'edit']);
+        Route::put('/update-mitra/{id}', [UserController::class, 'update']);
+        Route::get('/delete-user/{id}', [UserController::class, 'destroy']);
+
         Route::get('/mitra', [UserController::class, 'mitra'])->name('mitra.index');
         Route::get('kost', [KostController::class, 'index'])->name('admin.kost');
         Route::get('/kost/{id}', [KostController::class, 'show'])->name('admin.kost.show');     

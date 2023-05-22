@@ -19,4 +19,25 @@ class UserController extends Controller
         $userRoleMitra = User::ofRole(2)->get();
         return view('admin.mitra.index', compact('userRoleMitra'));
     }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.mitra.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        $userId = User::findOrFail($id);
+        $userId->delete();
+
+        return back();
+    }
 }

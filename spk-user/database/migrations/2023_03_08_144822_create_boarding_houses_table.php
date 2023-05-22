@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('boarding_houses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained( 'users')->cascadeOnDelete();
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
             $table->string('nama_kost',75);
             $table->enum('jenis_kost',['Putra', 'Putri']);
             $table->string('alamat',150);

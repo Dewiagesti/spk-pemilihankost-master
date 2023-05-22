@@ -22,7 +22,7 @@ class RecomendationController extends Controller
             $row->total = number_format($row->harga + $row->jarak + $row->fasilitas + $row->panjang_lebar_kamar + $row->keamanan + $row->kebersihan + $row->lokasi + $row->daerah_sekitar, 3, '.', ',');
             return $row;
         })->sortByDesc('total');
-
+        
         return view('recomendation', compact('rows'));
     }
 }

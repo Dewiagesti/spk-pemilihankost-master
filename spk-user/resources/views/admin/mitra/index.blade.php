@@ -15,6 +15,7 @@
                                 <th>No Hp</th>
                                 <th>Longitude</th>
                                 <th>Latitude</th>
+                                <th>Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,10 @@
                                     <td>{{ $user->no_hp }}</td>
                                     <td>{{ $user->longitude }}</td>
                                     <td>{{ $user->latitude }}</td>
+                                    <td>
+                                        <a href="/admin/edit-mitra/{{ $user->id }}" class="btn btn-info">Edit</a>
+                                        <a href="/admin/delete-user/{{ $user->id }}" class="btn btn-danger">Hapus</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
