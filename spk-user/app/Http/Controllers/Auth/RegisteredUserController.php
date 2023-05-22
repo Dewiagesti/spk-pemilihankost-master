@@ -62,9 +62,9 @@ class RegisteredUserController extends Controller
 
         if (Auth::check()) {
             if (Auth::user()->role == 2) {
-                return redirect()->intended('/mitra/login');
+                return redirect('/mitra/login');
             }else {
-                return redirect()->intended('/login');
+                return redirect('/login');
             }
         }
         // return redirect()->intended();

@@ -27,7 +27,10 @@ class Kost extends Model
         'keamanan', 
         'kebersihan',
         'lokasi',
-        'daerah_sekitar'
+        'daerah_sekitar',
+        'gambar_kamar',
+        'gambar_kamar_mandi',
+        'gambar_tampak_depan'
     ];
 
     /**

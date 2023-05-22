@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\FileUpload;
 use App\Models\Alternative;
 use App\Models\Kost;
 use App\Models\Normalization;
@@ -23,7 +24,8 @@ class AlternativeService
 
     public static function createAlternativeTable(Request $request)
     {
-       
+    
+
         $createBoardingHouse = Kost::create([
             'user_id'       => Auth::user()->id,
             'nama_kost'     => request('nama_kost'),
@@ -39,6 +41,9 @@ class AlternativeService
             'lokasi'        => request('lokasi'),
             'kebersihan'    => request('kebersihan'),
             'daerah_sekitar'=> request('daerah_sekitar'),
+            'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar'),
+            'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi'),
+            'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
         ]);
 
         $createAlternative = Alternative::create([
