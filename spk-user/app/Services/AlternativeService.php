@@ -24,8 +24,7 @@ class AlternativeService
 
     public static function createAlternativeTable(Request $request)
     {
-    
-
+        
         $createBoardingHouse = Kost::create([
             'user_id'       => Auth::user()->id,
             'nama_kost'     => request('nama_kost'),

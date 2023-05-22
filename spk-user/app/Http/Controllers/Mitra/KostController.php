@@ -38,18 +38,7 @@ class KostController extends Controller
     {
   
         AlternativeService::createAlternativeTable($request);
-        // $attr['longitude'] = Auth::user()->longitude;
-        // $attr['latitude'] = Auth::user()->latitude;
-        // $attr['mitra'] = Auth::user()->id;
-        // $attr['gambar_kamar'] = FileUpload::uploadFile($request->file('gambar_kamar'), '/gambar-kamar');
-        // $attr['gambar_kamar_mandi'] = FileUpload::uploadFile($request->file('gambar_kamar_mandi'), '/gambar-kamar-mandi');
-        // $attr['gambar_tampak_depan'] = FileUpload::uploadFile($request->file('gambar_tampak_depan'), '/gambar-tampak-depan');
 
-
-        // return response()->json([
-        //     'status' => 200,
-        //     'message' =>'Data berhasil disimpan.'
-        // ], 200);
     }
 
     /**

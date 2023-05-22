@@ -133,23 +133,23 @@
                     </div>  
                     <div class="form-group">
                         <label>Alamat Kost</label>
-                        <textarea id="" cols="30" name="alamat" id="address" rows="5" class="form-control"></textarea>
+                        <textarea  cols="30" name="alamat" id="address" rows="5" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Gambar Kamar</label>
-                        <input type="file" class="form-control" name="gambar_kamar" >
-                        <img src="" id="room_image" alt="Gambar Defaul">
+                        <input type="file" class="form-control" id="gambarKamar" name="gambar_kamar" >
+                        <img src="" id="room_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
                     <div class="form-group">
                         <label>Gambar Kamar Mandi</label>
-                        <input type="file" class="form-control" name="gambar_kamar_mandi" >
-                        <img src="" id="bathroom_image" alt="Gambar Defaul">
+                        <input type="file" class="form-control" id="gambarKamarMandi" name="gambar_kamar_mandi" >
+                        <img src="" id="bathroom_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
                                         
                     <div class="form-group">
                         <label>Gambar Kamar Tampak Depan</label>
-                        <input type="file" class="form-control" name="gambar_tampak_depan" >
-                        <img src="" id="front_view_image" alt="Gambar Defaul">
+                        <input type="file" class="form-control" id="gambarTampakDepan" name="gambar_tampak_depan" >
+                        <img src="" id="front_view_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary" id="btn-submit" {{ ($kostByUserMitra == null) ? '' : 'disabled'  }}>Submit</button>
@@ -160,6 +160,29 @@
     </div>
     @push('scripts')
         <script>
+
+            gambarKamar.onchange = evt => {
+                const [file] = gambarKamar.files
+                if (file) {
+                    room_image.src = URL.createObjectURL(file)
+                }
+            }
+
+            gambarKamarMandi.onchange = evt => {
+                const [file] = gambarKamarMandi.files
+                if (file) {
+                    bathroom_image.src = URL.createObjectURL(file)
+                }
+            }
+
+            gambarTampakDepan.onchange = evt => {
+                const [file] = gambarTampakDepan.files
+                if (file) {
+                    front_view_image.src = URL.createObjectURL(file)
+                }
+            }
+
+
             $(document).ready(function() {
                 var row = $(this).closest('tr');
                 $('#formCreate').on('submit', function(e) {
@@ -207,6 +230,7 @@
 
                 $('#myTable').on('click', '.edit-row', function (e) {
                     e.preventDefault();
+                    var appURL = '{{ env('APP_URL') }}';
                     var id =  $(this).data('id');
                     $('#btn-submit').attr("disabled", false)
                     $.ajax({
@@ -225,12 +249,12 @@
                             $('#panjang_lebar_kamar').val(res.panjang_lebar_kamar)
                             $('#cleanliness').val(res.kebersihan)
                             $('#security').val(res.keamanan)
-                            $('#address').val(res.alamat)
+                            $('textarea[name="alamat"]').val(res.alamat)
                             $('#location').val(res.lokasi)
-                            $('#area').val(res.lokasi)
-                            $('#room_image').attr('src', res.gambar_kamar)
-                            $('#bathroom_image').attr('src', res.gambar_kamar_mandi)
-                            $('#front_view_image').attr('src', res.gambar_tampak_depan)
+                            $('#area').val(res.daerah_sekitar)
+                            $('#room_image').attr('src',  appURL+'/storage/'+res.gambar_kamar)
+                            $('#bathroom_image').attr('src', appURL+'/storage/'+res.gambar_kamar_mandi)
+                            $('#front_view_image').attr('src', appURL+'/storage/'+res.gambar_tampak_depan)
                         },
                     })
                 })

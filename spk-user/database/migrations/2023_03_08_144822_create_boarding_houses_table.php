@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('boarding_houses', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_kost',75);
             $table->enum('jenis_kost',['Putra', 'Putri']);
             $table->string('alamat',150);
@@ -35,6 +32,10 @@ return new class extends Migration
             $table->string('gambar_tampak_depan')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
