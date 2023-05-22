@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <div class="basic-form">
-                <form action="/admin/update-mitra/{{ $user->id }}" method="POST">
+                <form action="/admin/update/{{ $user->id }}" method="POST">
                 @method('PUT')
                 @csrf
                     <div class="form-group">

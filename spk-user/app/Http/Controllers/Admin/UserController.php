@@ -26,6 +26,12 @@ class UserController extends Controller
         return view('admin.mitra.edit', compact('user'));
     }
 
+    public function editUser($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.user.edit', compact('user'));
+    }
+
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);

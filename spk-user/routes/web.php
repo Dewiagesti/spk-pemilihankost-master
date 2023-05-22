@@ -27,7 +27,10 @@ Route::prefix('admin')
         
         Route::get('/users', [UserController::class, 'users'])->name('user.index');
         Route::get('/edit-mitra/{id}', [UserController::class, 'edit']);
-        Route::put('/update-mitra/{id}', [UserController::class, 'update']);
+        Route::get('/edit-user/{id}', [UserController::class, 'editUser']);
+
+        Route::put('/update/{id}', [UserController::class, 'update']);
+        
         Route::get('/delete-user/{id}', [UserController::class, 'destroy']);
 
         Route::get('/mitra', [UserController::class, 'mitra'])->name('mitra.index');
