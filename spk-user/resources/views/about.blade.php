@@ -1,110 +1,32 @@
 @extends('layouts.app')
 @section('content')
-<div class="untree_co-section">
-    <div class="container"> 
-      <div class="row gutter-v2">
 
+
+<div class="untree_co-section">
+    <div class="container">
+      <div class="row justify-content-center text-center">
         <div class="col-lg-12">
-            <div class="">
-                <div class="">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama.</th>
-                                <th>Jenis Kos.</th>
-                                <th>Alamat.</th>
-                                <th>Harga.</th>
-                                <th>Aksi.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($kosts as $kost)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kost->nama_kost }}</td>
-                                <td>{{ $kost->jenis_kost }}</td>
-                                <td>{{ $kost->alamat }}</td>
-                                <td>{{ $kost->harga }}</td>
-                                <td>
-                                    <a href="#" data-toggle="tooltip"  data-id="{{ $kost->id }}" data-original-title="Edit"  class="edit btn btn-primary editProduct">Detail</a>
-                                </td>
-                            </tr>
-                                @endforeach
-                        </tbody>
-                    </table>
-                </div>
+          <h2 class="text-secondary heading-2 mb-4">Tentang Aplikasi Kos</h2>
+          <div class="text-left">
+                <p>
+                    Aplikasi bertema kostan adalah platform digital yang memudahkan pengguna dalam mencari dan menyewa kamar kos atau kostan. Dengan fitur pencarian yang efisien, pengguna dapat dengan cepat menemukan kostan sesuai dengan kriteria mereka, seperti lokasi, harga, fasilitas, dan jenis kostan.
+                </p>
+                <p>
+                    Aplikasi ini menyediakan informasi detail tentang setiap kostan yang terdaftar, termasuk foto, deskripsi fasilitas, dan ulasan penghuni sebelumnya. Pengguna dapat melihat kondisi dan kualitas kostan sebelum membuat keputusan.
+                </p>
+                    Pemesanan dan pembayaran dilakukan secara online melalui aplikasi, dengan metode pembayaran yang beragam, seperti transfer bank atau pembayaran elektronik. Fitur pesan internal memungkinkan pengguna berinteraksi langsung dengan pemilik atau pengelola kostan untuk pertanyaan, penawaran, atau negosiasi harga.
+                <p>
+                    Aplikasi ini juga mengutamakan keamanan data pribadi pengguna. Reputasi kostan dapat dilihat melalui ulasan dan penilaian dari pengguna sebelumnya, membantu pengguna membuat keputusan yang lebih baik.
+                </p>
+                <p>
+                    Dalam ringkasan, aplikasi bertema kostan adalah solusi praktis bagi mereka yang mencari tempat tinggal sementara atau jangka panjang. Dengan fitur-fitur yang lengkap dan mudah digunakan, aplikasi ini mempermudah pengguna dalam mencari dan menyewa kostan sesuai dengan preferensi mereka.
+                </p>
             </div>
         </div>
-
-
-        {{-- modal --}}
-        <div class="modal fade" id="ajaxModel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modelHeading"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <form id="productForm" name="productForm" class="form-horizontal">
-                           <input type="hidden" name="product_id" id="product_id">
-                            <div class="form-group">
-                                <label for="name"  class="col-sm-2 control-label font-weight-bold">Nama</label>
-                                <div class="col-sm-12">
-                                    <p id="nama_kost"></p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Jenis Kos</label>
-                                <div class="col-sm-12">
-                                    <p id="jenis_kost"></p>
-                                </div>
-                            </div>   
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Alamat</label>
-                                <div class="col-sm-12">
-                                    <p id="alamat"></p>
-                                </div>
-                            </div>  
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Harga</label>
-                                <div class="col-sm-12">
-                                    <p id="harga"></p>
-                                </div>
-                            </div>     
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Fasilitas</label>
-                                <div class="col-sm-12">
-                                    <p id="fasilitas"></p>
-                                </div>
-                            </div> 
-                             <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Panjang Kamar</label>
-                                <div class="col-sm-12">
-                                    <p id="panjang_kamar"></p>
-                                </div>
-                            </div>   
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Lebar Kamar</label>
-                                <div class="col-sm-12">
-                                    <p id="lebar_kamar"></p>
-                                </div>
-                            </div> 
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label font-weight-bold">Keamanan</label>
-                                <div class="col-sm-12">
-                                    <p id="keamanan"></p>
-                                </div>
-                            </div> 
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>     
-
-      </div> <!-- /.row -->
-    </div> <!-- /.container -->
+      </div>
+    </div>
   </div>
+
 @endsection
 @push('scripts')
     <script>
