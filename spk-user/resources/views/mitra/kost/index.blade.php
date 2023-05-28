@@ -1,45 +1,4 @@
 <x-app-layout-admin>
-    <div class="col-lg-5">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Kost saya</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered verticle-middle table-responsive-sm" id="myTable">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nama Kost</th>
-                                <th scope="col">Jenis Kost</th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($kostByUserMitra == null)
-                                <tr>
-                                    <td colspan="4" class="text-center">Maaf data masih kosong</td>
-                                </tr>
-                            @else
-                            <tr>
-                                <td>{{ $kostByUserMitra->nama_kost }}</td>
-                                <td>{{ $kostByUserMitra->jenis_kost }}</td>
-                                <td><span class="badge badge-primary">Rp.{{ $kostByUserMitra->harga }}</span>
-                                </td>
-                                <td>
-                                    <span>
-                                        <a href="javascript:void(0)" class="mr-4 edit-row" data-id="{{ $kostByUserMitra->id }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
-                                        <a href="javascript:void(0)" data-toggle="tooltip" class="delete-row" data-placement="top" data-id="{{ $kostByUserMitra->id }}" title="Close"><i class="fa fa-close color-danger"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-lg-7">
         <div class="card">
             <div class="card-header">Tambah Kost</div>
@@ -151,10 +110,52 @@
                         <input type="file" class="form-control" id="gambarTampakDepan" name="gambar_tampak_depan" >
                         <img src="" id="front_view_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary" id="btn-submit" {{ ($kostByUserMitra == null) ? '' : 'disabled'  }}>Submit</button>
-                    </div>
+                    
+                        <button class="btn btn-primary w-100" id="btn-submit" {{ ($kostByUserMitra == null) ? '' : 'disabled'  }}>Submit</button>
+                    
+                    
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Kost saya</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered verticle-middle table-responsive-sm" id="myTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nama Kost</th>
+                                <th scope="col">Jenis Kost</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($kostByUserMitra == null)
+                                <tr>
+                                    <td colspan="4" class="text-center">Maaf data masih kosong</td>
+                                </tr>
+                            @else
+                            <tr>
+                                <td>{{ $kostByUserMitra->nama_kost }}</td>
+                                <td>{{ $kostByUserMitra->jenis_kost }}</td>
+                                <td><span class="badge badge-primary">Rp.{{ $kostByUserMitra->harga }}</span>
+                                </td>
+                                <td>
+                                    <span>
+                                        <a href="javascript:void(0)" class="mr-4 edit-row" data-id="{{ $kostByUserMitra->id }}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted"></i> </a>
+                                        <a href="javascript:void(0)" data-toggle="tooltip" class="delete-row" data-placement="top" data-id="{{ $kostByUserMitra->id }}" title="Close"><i class="fa fa-close color-danger"></i></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

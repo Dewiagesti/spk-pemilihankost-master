@@ -1,30 +1,80 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<!doctype html>
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div>
-    </body>
+  <link rel="stylesheet" href="{{  asset('homespace/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('homespace/fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('homespace/fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{  asset('homespace/css/aos.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="{{  asset('homespace/css/style.css') }}">
+
+  <title>{{ config('app.name', 'Laravel') }}</title>
+</head>
+
+<body>
+
+  <div class="lines-wrap">
+    <div class="lines-inner">
+      <div class="lines"></div>
+    </div>
+  </div>
+  <!-- END lines -->
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+ {{-- navbar --}}
+ @include('layouts.components.navbar')
+
+
+    @yield('content')
+
+{{-- Footer --}}
+@include('layouts.components.footer')
+
+<div id="overlayer"></div>
+<div class="loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<script src="{{ asset('homespace/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('homespace/js/popper.min.js') }}"></script>
+<script src="{{ asset('homespace/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('homespace/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.animateNumber.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('homespace/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('homespace/js/aos.js') }}"></script>
+<script src="{{ asset('homespace/js/jarallax.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ asset('homespace/js/custom.js') }}"></script>
+
+@stack('scripts')
+<!-- Global site tag (gtag.js) - Google Analytics -->
+</body>
+
 </html>
+ 

@@ -19,7 +19,7 @@ class RecomendationController extends Controller
             // $row->harga = $row->kost->harga;
             // $row->panjang_lebar_kamar = $row->kost->panjang_lebar_kamar;
             // $row->keamanan = $row->kost->keamanan;
-            $row->total = number_format($row->harga + $row->jarak + $row->fasilitas + $row->panjang_lebar_kamar + $row->keamanan + $row->kebersihan + $row->lokasi + $row->daerah_sekitar, 3, '.', ',');
+            $row->total = number_format(($row->harga * 7) + ($row->jarak * 8) + ($row->fasilitas * 4) + ($row->panjang_lebar_kamar * 3) + ($row->keamanan * 6) + ($row->kebersihan * 5) + ($row->lokasi * 2) + ($row->daerah_sekitar * 1), 3, '.', ',');
             return $row;
         })->sortByDesc('total');
         

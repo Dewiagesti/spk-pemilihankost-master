@@ -1,67 +1,93 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" autocomplete="off">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@extends('layouts.app')
+@section('content')
+<div class="untree_co-section bg-light">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-6">
+          <h2 class="text-secondary heading-2">Sign up</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
         </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-5 bg-white p-5">
+          <form class="contact-form" data-aos="fade-up" data-aos-delay="200" method="POST" action="{{ route('register') }}">
+                @csrf
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <div class="form-group">
+              <label class="text-black" for="name">Name</label>
+              <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <div class="form-group">
+                <label class="text-black" for="email">Email address</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email">
+                  @error('email')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                  @enderror
+              </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+            <div class="form-group">
+              <label class="text-black" for="password">Password</label>
+              <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+              @error('password')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+              @enderror
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <div class="form-group">
+                <label class="text-black" for="password">Password Konfirmasi</label>
+                <input type="password"
+                            id="password_confirmation"                             
+                            name="password_confirmation" required autocomplete="new-password"
+                            class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation">
+                @error('password_confirmation')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+            </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <div class="form-group">
+                <label class="text-black" for="no_hp">No Handphone</label>
+                <input type="text" 
+                    id="no_hp" 
+                    type="number" name="no_hp" required
+                    class="form-control @error('no_hp') is-invalid @enderror" >
+                  @error('no_hp')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                  @enderror
+            </div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+            <div class="form-group">
+                <label>Alamat</label>
+                 <textarea id="alamat" class="form-control @error('alamat') is-invalid @enderror" name="alamat" :value="old('alamat')" required></textarea>
+                 @error('alamat')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                  @enderror
+            </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+            <button type="submit" class="btn btn-primary mb-4">Sign up</button>
 
-        {{-- No Handphone --}}
-        <div class="mt-4">
-            <x-input-label for="no_hp" :value="__('No Handphone')" />
-            <x-text-input id="no_hp" class="block mt-1 w-full" type="number" name="no_hp" :value="old('no_hp')" required />
-            <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
-        </div>
-
-
-        {{-- Latitude --}}
-        <div class="mt-4">
-            <x-input-label for="alamat" :value="__('Alamat')" />
-            <textarea id="alamat" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full" name="alamat" :value="old('alamat')" required></textarea>
-            <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+            <div class="form-group">
+              <p><small>Already account? <a href="{{ route('login') }}">Login</a></small></p>
+            </div>
+          </form>
+        </div> <!-- /.col-lg-7 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
+  </div> <!-- /.untree_co-section bg-light -->
+  
+@endsection

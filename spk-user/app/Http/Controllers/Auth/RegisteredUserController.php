@@ -53,20 +53,17 @@ class RegisteredUserController extends Controller
         
         ($request->longitude == null && $request->latitude == null) ? $data['role'] = 3 : $data['role'] = 2;
 
+
         $user = User::create($data);
       
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        if (Auth::check()) {
-            if (Auth::user()->role == 2) {
-                return redirect('/mitra/login');
-            }else {
-                return redirect('/login');
-            }
+        if ($user->role == 2) {
+            return redirect('/mitra/login');
+        }else {
+            return redirect('/login');
         }
-        // return redirect()->intended();
+        
     }
 }
