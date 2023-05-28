@@ -11,9 +11,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 bg-white p-5">
           <form class="contact-form" data-aos="fade-up" data-aos-delay="200" method="POST" action="{{ route('login') }}">
-
-                @csrf
-        
+              @csrf
             <div class="form-group">
               <label class="text-black" for="email">Email address</label>
               <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email">
@@ -26,7 +24,7 @@
 
             <div class="form-group">
               <label class="text-black" for="password">Password</label>
-              <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="passwordd">
+              <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
               @error('password')
               <div class="invalid-feedback">
                   {{ $message }}

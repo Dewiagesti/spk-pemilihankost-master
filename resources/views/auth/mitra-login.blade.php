@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label class="text-black" for="password">Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="passwordd">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
             @error('password')
             <div class="invalid-feedback">
                 {{ $message }}
