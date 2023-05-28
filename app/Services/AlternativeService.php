@@ -24,7 +24,7 @@ class AlternativeService
 
     public static function createAlternativeTable(Request $request)
     {
-        
+    
         $createBoardingHouse = Kost::create([
             'user_id'       => Auth::user()->id,
             'nama_kost'     => request('nama_kost'),
@@ -49,7 +49,7 @@ class AlternativeService
             'kost_id' => $createBoardingHouse->id,
             'harga'         => static::priceRangeRequest($request),
             'jarak'         => static::priceDistanceRequest($request),
-            'fasilitas'     => static::facilityRequest(str_replace(',',' ', $request->fasilitas)),
+            'fasilitas'     => static::facilityRequest(str_replace(',','|', $request->fasilitas)),
             'lokasi'        => static::locationRequest($request),
             'panjang_lebar_kamar' => static::roomSizeRequest($request),
             'keamanan'      => static::securityRequest($request),
@@ -83,13 +83,25 @@ class AlternativeService
             
             while($sentences != $y) {
                 $y .= $sentences[$index];
-                if ($sentences[$index] == " ") {
+                if ($sentences[$index] == "|") {
                     $numberOfSentences++;
                 }
                 $index++;
             }
             $numberOfSentences++;
-            return $numberOfSentences;
+            // return $numberOfSentences;
+            if ($numberOfSentences > 2 && $numberOfSentences <= 6) {
+                return 2;
+            }elseif($numberOfSentences > 6 && $numberOfSentences <= 8) {
+                return 3;
+            }elseif ($numberOfSentences > 8 && $numberOfSentences <= 10) {
+                return 4;
+            }elseif($numberOfSentences > 10){
+                return 5;
+            }
+            else {
+                return 1;
+            }
     
     }
 
