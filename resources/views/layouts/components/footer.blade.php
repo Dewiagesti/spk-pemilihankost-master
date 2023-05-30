@@ -4,13 +4,11 @@
         <div class="row">
           <div class="col-md-6 col-lg-4">
             <div class="widget">
-              <h3 class="heading">About Untree.co</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h3 class="heading">Tentang Indekos</h3>
+              <p>Aplikasi bertema indekos adalah platform digital yang memudahkan pengguna dalam mencari dan menyewa kamar kos atau kosan. Dengan fitur pencarian yang efisien, pengguna dapat dengan cepat menemukan kostan sesuai dengan kriteria mereka, seperti lokasi, harga, fasilitas, dan jenis kostan.</p>
             </div>
             <div class="widget">
               <ul class="list-unstyled social">
-                <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
                 <li><a href="#"><span class="icon-twitter"></span></a></li>
                 <li><a href="#"><span class="icon-instagram"></span></a></li>
                 <li><a href="#"><span class="icon-facebook"></span></a></li>
@@ -19,31 +17,30 @@
           </div>
           <div class="col-md-6 col-lg-2 pl-lg-5">
             <div class="widget">
-              <h3 class="heading">Pages</h3>
+              <h3 class="heading">Daftar halaman</h3>
               <ul class="links list-unstyled">
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Buy</a></li>
-                <li><a href="#">Sell</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Rekomendasi Indkos</a></li>
+                <li><a href="#"></a>Pesan indekos</li>
+                <li><a href="#">Tentang</a></li>
+                <li><a href="#">Register/Login</a></li>
               </ul>
             </div>
           </div>
           <div class="col-md-6 col-lg-2">
             <div class="widget">
-              <h3 class="heading">Resources</h3>
+              <h3 class="heading">Jeniskos</h3>
               <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#"></a>Putra</li>
+                <li><a href="#">Putri</a></li>
               </ul>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
             <div class="widget">
-              <h3 class="heading">Contact</h3>
+              <h3 class="heading">Temukan kami</h3>
               <ul class="list-unstyled quick-info links">
-                <li class="email"><a href="#">info@untree.co</a></li>
+                <li class="email"><a href="#">indekos@gmail.com</a></li>
                 <li class="phone"><a href="#">+1 222 212 3819</a></li>
                 <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
               </ul>
