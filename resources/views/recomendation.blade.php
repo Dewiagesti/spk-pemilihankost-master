@@ -16,43 +16,51 @@
 <div class="untree_co-section">
     <div class="container">
       <div class="row align-items-stretch">
-        <div class="col-lg-4 mb-4 mb-lg-0">
+
+          <div class="col-lg-3 mb-4 mb-lg-0">
+            <form action="{{ route('recomendation') }}">
             <div class="form-group">
                 <label>Jenis indeKos</label>
-                <select name="" id="" class="form-control">
+                <select name="jenis_kost" id="jenkel" class="form-control">
                     <option value="">Pilih salah satu</option>
-                    <option value="1">Putra</option>
-                    <option value="2">Putri</option>
+                    <option value="Putra">Putra</option>
+                    <option value="Putri">Putri</option>
                 </select>
             </div>
         </div>
-        <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="col-lg-3 mb-4 mb-lg-0">
             <div class="form-group">
                 <label>Harga indeKos</label>
-                <select name="" id="" class="form-control">
+                <select name="harga" id="harga" class="form-control">
                 <option value="" >Pilih salah satu</option>
-                    <option value="1">200 - 300</option>
-                    <option value="2">300 - 350</option>
-                    <option value="3">350 - 400</option>
-                    <option value="4">460 - 500</option>
-                    <option value="5">>500</option>
+                    <option value="250,299">250 - 299</option>
+                    <option value="300,349">300 - 349</option>
+                    <option value="350,459">350 - 459</option>
+                    <option value="460,499">460 - 499</option>
+                    <option value="500">>500</option>
                 </select>
             </div>
         </div>
-        <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="col-lg-3 mb-4 mb-lg-0">
             <div class="form-group">
                 <label>Jarak indeKos</label>
-                <select name="" id="" class="form-control">
+                <select name="jarak" id="jarak" class="form-control">
                 <option value="">Pilih salah satu</option>
-                    <option value="1">150m - 350m</option>
-                    <option value="2">360m - 450m</option>
-                    <option value="3">460m - 850m</option>
-                    <option value="4">960m - 1km</option>
-                    <option value="5">1km</option>
+                    <option value="150,350">150m - 350m</option>
+                    <option value="360,450">360m - 450m</option>
+                    <option value="460,850">460m - 850m</option>
+                    <option value="960,999">960m - 1km</option>
+                    <option value="1000">1km</option>
                 </select>
             </div>
         </div>
-         <!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 mb-4 mb-lg-0">
+            <button class="btn btn-primary">Hitung</button>
+        </div>
+    </form>
+
+         <!-- /.col-lg-3 -->
         <div class="col-lg-12 mb-4 ">
             <div class="">
 
@@ -72,7 +80,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($rows as $item)
+                        @forelse ($rows as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kost->nama_kost }}</td>
@@ -84,13 +92,14 @@
                                 <td>{{ $item->kost->keamanan }}</td>
                                 <td>{{ $item->total }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td>Maaf Tidak dapat ditemukan</td>
+                            </tr>
+                        @endforelse
                     </tbody>
-                </table>
-
-              
+                </table>           
             </div>
-          
         </div>
       </div> <!-- /.row -->
     </div> <!-- /.container -->  
@@ -98,31 +107,20 @@
 @endsection
 
 @push('scripts')
-{{-- <script>
-    $(document).ready(function() {
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script>
+$(function(){
+    $('#jenkel').on('change', function () {
+        var gender = $(this).val()
         $.ajax({
-            url: '{{ route("rangking.index") }}',
-            method: 'GET',
-            success: function(data) {
-              
-                var tableBody = $('#users-table tbody');
-
-                $.each(data, function(index, rangking) {
-                    var row = '<tr>' +
-                        '<td>' + rangking.id + '</td>' +
-                        '<td>' + rangking.kost_id + '</td>' +
-                        '<td>' + rangking.jenis_kost + '</td>' +
-                        '<td>' + rangking.alamat + '</td>' +
-                        '<td>' + rangking.jarak + '</td>' +
-                        '<td>' + rangking.harga + '</td>' +
-                        '<td>' + rangking.panjang_lebar_kamar + '</td>' +
-                        '<td>' + rangking.keamanan + '</td>' +
-                        '<td>' + rangking.total + '</td>' +
-                    '</tr>';
-                    tableBody.append(row);
-                });
+            url: '/api/gender/'+gender,
+            type: 'GET',
+            data: {'kos': gender},
+            succes: function(res) {
+                console.log(res);
             }
-        });
-    });
-</script> --}}
+        })
+    })
+})
+</script>
 @endpush
