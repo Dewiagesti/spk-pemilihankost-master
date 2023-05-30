@@ -1,12 +1,12 @@
 <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-        <a href="index.html" class="logo m-0">Homespace <span class="text-primary">.</span></a>
+        <a href="index.html" class="logo m-0">Indekos<span class="text-primary">.</span></a>
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
           <li class="active"><a href="/">Home</a></li>
           <li><a href="{{ route('recomendation') }}">Rekomendasi</a></li>
-          <li><a href="{{ route('about') }}">About</a></li>
+          <li><a href="{{ route('about') }}">Tentang</a></li>
           @auth
             <li><a href="javascript:void(0)">{{ Auth::user()->name; }}</a></li> 
             <li>
