@@ -4,8 +4,8 @@
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-6">
-          <h2 class="text-secondary heading-2">Sign up</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <h2 class="text-secondary heading-2">Register Seabagai Pencari Kost</h2>
+          <p>Silahkan Registrasi terlebih dahulu.</p>
         </div>
       </div>
       <div class="row justify-content-center">
@@ -79,10 +79,10 @@
                   @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary mb-4">Sign up</button>
+            <button type="submit" class="btn btn-primary mb-4">Register</button>
 
             <div class="form-group">
-              <p><small>Already account? <a href="{{ route('login') }}">Login</a></small></p>
+              <p><small>Apakah sudah punya akun? <a href="{{ route('login') }}">Login</a></small></p>
             </div>
           </form>
         </div> <!-- /.col-lg-7 -->
