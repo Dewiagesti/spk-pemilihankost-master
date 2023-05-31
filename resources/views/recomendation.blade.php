@@ -94,7 +94,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td>Maaf Tidak dapat ditemukan</td>
+                                <td colspan="9" class="text-center">Maaf Tidak dapat ditemukan</td>
                             </tr>
                         @endforelse
                     </tbody>

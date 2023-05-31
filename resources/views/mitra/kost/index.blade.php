@@ -195,7 +195,7 @@
                         contentType: false,
                         processData: false,
                         success: function(response) {
-                            alert(response.message);
+                            alert("Berhasil disimpan");
                             $('#formCreate')[0].reset();
                             location.reload();
                         },

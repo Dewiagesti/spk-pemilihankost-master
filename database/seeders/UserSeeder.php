@@ -23,5 +23,8 @@ class UserSeeder extends Seeder
         ];
 
         User::create($user);
+
+
+        User::factory()->count(15)->create();
     }
 }

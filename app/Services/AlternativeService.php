@@ -24,8 +24,10 @@ class AlternativeService
 
     public static function createAlternativeTable(Request $request)
     {
-    
-        $createBoardingHouse = Kost::create([
+
+        $createBoardingHouse = Kost::updateOrCreate(
+            ['user_id' => Auth::user()->id],
+            [
             'user_id'       => Auth::user()->id,
             'nama_kost'     => request('nama_kost'),
             'jenis_kost'    => request('jenis_kost'),
@@ -45,7 +47,7 @@ class AlternativeService
             'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
         ]);
 
-        $createAlternative = Alternative::create([
+        $createAlternative = Alternative::updateOrCreate(['kost_id' => $createBoardingHouse->id],[
             'kost_id' => $createBoardingHouse->id,
             'harga'         => static::priceRangeRequest($request),
             'jarak'         => static::priceDistanceRequest($request),

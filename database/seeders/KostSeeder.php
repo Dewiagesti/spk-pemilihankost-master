@@ -13,6 +13,7 @@ class KostSeeder extends Seeder
      */
     protected $kosts = [
             [
+                'kost_id'   => 2,
                 'nama_kost' => 'Bak Yuli',
                 'jenis_kost' => 'Putra',
                 'alamat' => 'Gang Pabrik',
@@ -24,6 +25,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'bersih'
             ],
             [
+                'kost_id'   => 3,
                 'nama_kost' => 'Kos Putra',
                 'jenis_kost' => 'Putra',
                 'alamat' => 'Gang Penjara',
@@ -35,6 +37,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'bersih'
             ],
             [
+                'kost_id' => 4,
                 'nama_kost' => 'Kos Annisa',
                 'jenis_kost' => 'Putra',
                 'alamat' => 'Polres Bondowoso',
@@ -46,6 +49,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'bersih'
             ],
             [
+                'kost_id' => 5,
                 'nama_kost' => 'Kos Haji Lutfi',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Polres Bondowoso',
@@ -57,6 +61,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Sangat Bersih'
             ],
             [
+                'kost_id' => 6,
                 'nama_kost' => 'Kos Busigik',
                 'jenis_kost' => 'Putra',
                 'alamat' => 'Polres Bondowoso',
@@ -68,6 +73,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Bersih'
             ],
             [
+                'kost_id' => 7,
                 'nama_kost' => 'Kos Bu Joko',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Gang Cinta',
@@ -79,6 +85,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Bersih'
             ],
             [
+                'kost_id' => 8,
                 'nama_kost' => 'Kos Sakinnah',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Gang Cinta',
@@ -90,6 +97,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Bersih'
             ],
             [
+                'kost_id' => 9,
                 'nama_kost' => 'Kos Janur',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Dabasah',
@@ -101,6 +109,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Bersih'
             ],
             [
+                'kost_id' => 10,
                 'nama_kost' => 'Kos Darusalam',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Kotakulon',
@@ -112,6 +121,7 @@ class KostSeeder extends Seeder
                 'kebersihan' => 'Bersih'
             ],
             [
+                'kost_id' => 11,
                 'nama_kost' => 'Kos Salsabila',
                 'jenis_kost' => 'Putri',
                 'alamat' => 'Kotakulon',
