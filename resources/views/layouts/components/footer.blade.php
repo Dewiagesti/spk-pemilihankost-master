@@ -42,7 +42,7 @@
               <ul class="list-unstyled quick-info links">
                 <li class="email"><a href="#">indekos@gmail.com</a></li>
                 <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+                <li class="address"><a href="#">Jl. Raya Situbondo, Blindungan, Kec. Bondowoso, Kabupaten Bondowoso</a></li>
               </ul>
             </div>
           </div>
