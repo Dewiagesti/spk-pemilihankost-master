@@ -76,7 +76,9 @@
                             <th>Harga</th>
                             <th>Panjang dan Lebar Kamar</th>
                             <th>Keamanan</th>
+                            <th>Kebersihan</th>
                             <th>Total</th>
+                            <th>Option</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,11 +92,15 @@
                                 <td>Rp.{{ $item->kost->harga }}.000</td>
                                 <td>{{ $item->kost->panjang_lebar_kamar }}m</td>
                                 <td>{{ $item->kost->keamanan }}</td>
+                                <td>{{ $item->kost->kebersihan }}</td>
                                 <td>{{ $item->total }}</td>
+                                <td>
+                                    <button class="btn btn-primary">Detail</button>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center">Maaf Tidak dapat ditemukan</td>
+                                <td colspan="10" class="text-center">Maaf Tidak dapat ditemukan</td>
                             </tr>
                         @endforelse
                     </tbody>
