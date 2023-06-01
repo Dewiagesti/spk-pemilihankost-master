@@ -5,14 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\KostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Mitra\KostController as MitraKostController;
 use App\Http\Controllers\Mitra\NormalizationController;
 use App\Http\Controllers\RecomendationController;
 
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 
 // Page not Auth alias Landing page

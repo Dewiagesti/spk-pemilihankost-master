@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="{{  asset('homespace/css/style.css') }}">
 
   <title>{{ config('app.name', 'Laravel') }}</title>
+  @stack('style')
 </head>
 
 <body>
