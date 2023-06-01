@@ -34,9 +34,6 @@ class RecomendationController extends Controller
         })
         ->sortByDesc('total');
         
-
-    
-
         return view('recomendation', compact('rows'));
     }
 

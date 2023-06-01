@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-lg-3 mb-4 mb-lg-0">
-            <button class="btn btn-primary">Hitung</button>
+            <button type="submit" class="btn btn-primary">Hitung</button>
         </div>
     </form>
 

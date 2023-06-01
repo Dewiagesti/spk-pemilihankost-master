@@ -21,7 +21,7 @@ Route::get('/about/{id}/edit', [AboutController::class, 'detail']);
 
 Route::get('/rekomendasi', [RecomendationController::class, 'index'])
         ->middleware([
-            'auth', 'verified'
+            'auth', 'role:3'
         ])->name('recomendation');
 
 // admin page

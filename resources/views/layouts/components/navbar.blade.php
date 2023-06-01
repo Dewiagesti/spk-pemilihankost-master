@@ -4,7 +4,7 @@
         <a href="index.html" class="logo m-0">Indekos<span class="text-primary">.</span></a>
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
-          <li class="active"><a href="/">Home</a></li>
+          <li class="active"><a href="{{ route('home') }}">Home</a></li>
           @auth
           <li><a href="{{ route('recomendation') }}">Rekomendasi</a></li>
           @endauth
@@ -19,6 +19,7 @@
                     <i class="icon-key"></i>
                     <span class="ml-2">Logout </span>
                 </a>
+                  </form>
             </li>
           @endauth
           @guest
