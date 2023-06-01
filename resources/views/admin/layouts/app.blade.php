@@ -44,9 +44,12 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('admin/images/logo.png') }}" alt="">
-                <img class="logo-compact" src="{{ asset('admin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('admin/images/logo-text.png') }}" alt="">
+                @if(Auth::user()->role == 1)
+                <li class="nav-label">Admin</li>
+                @else
+                <li class="nav-label">Mitra</li>
+                @endif
+                
             </a>
 
             <div class="nav-control">
