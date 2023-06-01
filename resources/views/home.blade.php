@@ -8,11 +8,12 @@
         <a href="#" class="js-nav-right nav-right"><span class="icon-keyboard_arrow_right"></span></a>
         <a href="#" class="js-nav-left nav-left"><span class="icon-keyboard_arrow_left"></span></a>
       </div> --}}
-      <div class="jumbotron jumbotron-fluid" style="background: transparent">
+      <div class="jumbotron jumbotron-fluid" style="background: transparent; z-index: 90;">
         <div class="container">
           <h1 class="display-4">Selamat Datang di Sistem Pendukung Keputusan Pemilihan Indekos</h1>
           <p class="lead">Cari rekomendasi Indekos anda di Bonddowoso</p>
-          <a href="{{ route('login') }}" class="btn btn-primary">Daftar</a>
+          <!-- <a href="{{ route('login') }}" >Daftar</a> -->
+           <a href="javascript:void(0)" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModalCenter">Login</a>
         </div>
       </div>
     </div>

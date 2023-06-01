@@ -21,7 +21,7 @@
           @endauth
           @guest
             <li class="cta-button active">
-              <a href="javascript:void(0)"  data-toggle="modal" data-target="#exampleModalCenter">Login</a>
+             
             </li>
           @endguest
         </ul>
