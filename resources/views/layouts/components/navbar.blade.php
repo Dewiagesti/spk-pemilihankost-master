@@ -5,7 +5,9 @@
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
           <li class="active"><a href="/">Home</a></li>
+          @auth
           <li><a href="{{ route('recomendation') }}">Rekomendasi</a></li>
+          @endauth
           <li><a href="{{ route('about') }}">Tentang</a></li>
           @auth
             <li><a href="javascript:void(0)">{{ Auth::user()->name; }}</a></li> 
