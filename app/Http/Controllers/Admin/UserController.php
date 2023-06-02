@@ -42,8 +42,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $userId = User::findOrFail($id);
-        $userId->delete()->with('success', 'Berhasil Menghapus data');
+        $userId->delete();
 
-        return back();
+        return back()->with('success', 'Berhasil Menghapus data');
     }
 }
