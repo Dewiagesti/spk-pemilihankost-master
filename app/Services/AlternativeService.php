@@ -221,19 +221,19 @@ class AlternativeService
 
         switch ($reqLocation) {
             case 'Tidak Strategis':
-                   return $reqLocation = 1;
+                   return $reqLocation = 5;
                 break;
             case 'Kurang Strategis':
-                   return $reqLocation = 2;
+                   return $reqLocation = 4;
                 break;
             case 'Cukup Strategis':
                    return $reqLocation = 3;
                 break;
             case 'Strategis':
-                   return $reqLocation = 4;
+                   return $reqLocation = 2;
                 break;
             case 'Sangat Strategis':
-                   return $reqLocation = 5;
+                   return $reqLocation = 1;
                 break;
             default:
                     
