@@ -5,6 +5,13 @@
                 <h4 class="card-title">Datatable Mitra</h4>
             </div>
             <div class="card-body">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table id="example" class="display" style="width: 100%">
                         <thead>

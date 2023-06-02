@@ -5,6 +5,13 @@
                 <h4 class="card-title">Datatable Kost</h4>
             </div>
             <div class="card-body">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table id="example" class="display" style="min-width: 845px">
                         <thead>

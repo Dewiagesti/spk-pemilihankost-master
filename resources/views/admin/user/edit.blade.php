@@ -9,6 +9,13 @@
                 <h4 class="card-title">Form</h4>
             </div>
             <div class="card-body">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="basic-form">
                     <form action="/admin/update/{{ $user->id }}" method="POST">
                     @method('PUT')
@@ -20,7 +27,10 @@
                             <input type="text" class="form-control input-default" name="email"  value="{{ $user->email }}" placeholder="input-rounded">
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="10" name="alamat" class="form-control input-default">{{ $user->alamat }}</textarea>
+                            <input type="number" class="form-control input-default" name="no_hp"  value="{{ $user->no_hp }}" placeholder="input-rounded">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="alamat" id="" cols="30" rows="10" name="alamat" class="form-control input-default">{{ $user->alamat }}</textarea>
                         </div>
                 </div>
             </div>

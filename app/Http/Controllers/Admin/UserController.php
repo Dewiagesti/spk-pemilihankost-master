@@ -36,13 +36,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return back();
+        return back()->with('success', 'Berhasil mengupdate data');
     }
 
     public function destroy($id)
     {
         $userId = User::findOrFail($id);
-        $userId->delete();
+        $userId->delete()->with('success', 'Berhasil Menghapus data');
 
         return back();
     }
