@@ -9,6 +9,13 @@
             <h4 class="card-title">Form</h4>
         </div>
         <div class="card-body">
+            @if (\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                     <li>{!! \Session::get('success') !!}</li>
+                    </ul>
+                </div>
+                @endif
             <div class="basic-form">
                 <form action="/admin/update/{{ $user->id }}" method="POST">
                 @method('PUT')
