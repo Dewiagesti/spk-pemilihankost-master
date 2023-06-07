@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AlternativeService 
+class AlternativeService
 {
 
     private $user;
@@ -25,6 +25,7 @@ class AlternativeService
     public static function createAlternativeTable(Request $request)
     {
 
+
         $createBoardingHouse = Kost::updateOrCreate(
             ['user_id' => Auth::user()->id],
             [
@@ -32,10 +33,10 @@ class AlternativeService
             'nama_kost'     => request('nama_kost'),
             'jenis_kost'    => request('jenis_kost'),
             'alamat'        => request('alamat'),
-            'latitude'      => Auth::user()->latitude,
-            'longitude'     => Auth::user()->longitude,
+            'latitude'      => request('latitude'),
+            'longitude'     => request('longitude'),
             'jarak'         => request('jarak'),
-            'harga'         => request('harga'),
+            'harga'         => (int)str_replace('.', '', request('harga')),
             'fasilitas'     => request('fasilitas'),
             'panjang_lebar_kamar' => request('panjang_lebar_kamar'),
             'keamanan'      => request('keamanan'),
@@ -60,7 +61,7 @@ class AlternativeService
         ]);
 
         foreach (Alternative::get() as $key ) {
-     
+
             Normalization::updateOrCreate(
                 ['kost_id' => $key->kost_id],
                 [
@@ -76,13 +77,13 @@ class AlternativeService
             );
         }
     }
-    
+
     public static function facilityRequest($sentences)
     {
             $y = "";
             $numberOfSentences = 0;
             $index = 0;
-            
+
             while($sentences != $y) {
                 $y .= $sentences[$index];
                 if ($sentences[$index] == "|") {
@@ -104,7 +105,7 @@ class AlternativeService
             else {
                 return 1;
             }
-    
+
     }
 
 
@@ -138,7 +139,7 @@ class AlternativeService
     public static function priceDistanceRequest(Request $request)
     {
         $reqRange = $request->jarak;
-     
+
         if ($reqRange > 150 && $reqRange < 350) {
             return $reqRange = 1;
         }
@@ -183,7 +184,7 @@ class AlternativeService
                    return $reqSecurity = 5;
                 break;
             default:
-                    
+
                 break;
         }
 
@@ -210,7 +211,7 @@ class AlternativeService
                    return $reqCleanliness = 5;
                 break;
             default:
-                    
+
                 break;
         }
     }
@@ -236,7 +237,7 @@ class AlternativeService
                    return $reqLocation = 1;
                 break;
             default:
-                    
+
                 break;
         }
     }
@@ -262,9 +263,9 @@ class AlternativeService
                    return $reqRoomSize = 5;
                 break;
             default:
-                    
+
                 break;
-        }  
+        }
     }
 
     public static function areaRequest(Request $request)
@@ -288,7 +289,7 @@ class AlternativeService
                    return $reqArea = 5;
                 break;
             default:
-                    
+
                 break;
         }
     }

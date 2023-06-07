@@ -19,7 +19,7 @@ class KostController extends Controller
     public function index()
     {
         $kostByUserMitra = Kost::where('user_id',Auth::user()->id)->first();
-       
+
         return view('mitra.kost.index', compact('kostByUserMitra'));
     }
 
@@ -36,7 +36,6 @@ class KostController extends Controller
      */
     public function store(Request $request)
     {
-  
         AlternativeService::createAlternativeTable($request);
 
     }

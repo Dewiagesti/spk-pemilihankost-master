@@ -1,21 +1,81 @@
 
 @extends('auth.base')
+@push('css')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+<style>
+    #map { height: 600px; }
+</style>
+@endpush
 @push('js')
-    <script>
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-        function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            console.log("Latitude: " + latitude);
-            console.log("Longitude: " + longitude);
-            document.getElementById("latitude").value = latitude;
-            document.getElementById("longitude").value = longitude;
-        }
+    <script>
+        /* var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 10000,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map); */
+
+        /* L.esri.basemapLayer('Oceans').addTo(map); */
+
+        /* Hybrid: s,h;
+        Satellite: s;
+        Streets: m;
+        Terrain: p; */
+
+        var map = L.map('map').setView([-7.93699,113.812946], 13);
+        var marker = L.marker([-7.93699,113.812946]).addTo(map);
+        var circle = new L.circleMarker();
+
+        L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            minZoom: 10,
+            subdomains:['mt0','mt1','mt2','mt3']
+        }).addTo(map);
+
+
+        /* var labelLatVal = document.getElementById('labelLatitude');
+        var labelLongVal = document.getElementById('labelLongitude'); */
+
+        var latVal = document.getElementById('latitude');
+        var longVal = document.getElementById('longitude');
+
+        map.on('click', function(e) {
+            /* labelLatVal.innerHTML = e.latlng.lat;
+            labelLongVal.innerHTML = e.latlng.lng; */
+
+            latVal.value = e.latlng.lat;
+            longVal.value = e.latlng.lng;
+
+            map.removeLayer(marker)
+            map.removeLayer(circle);
+
+            marker = new L.Marker(e.latlng, {draggable:true});
+            map.addLayer(marker);
+
+            /* var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map); */
+            /* alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng); */
+        });
+
+        /* function setRadius(){
+            var rad = document.getElementById('radius').value;
+
+            map.removeLayer(circle);
+            circle = new L.circle([latVal.value, longVal.value], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: rad
+            }).addTo(map);
+        } */
+
+
     </script>
 @endpush
 @section('content')
@@ -79,32 +139,35 @@
                 </div>
                 @enderror
           </div>
-
-
-          <div class="form-group">
-            <label class="text-black" for="no_hp">Longitude</label>
-            <input type="text"
-                id="longitude"
-                type="number" name="longitude" required
-                class="form-control @error('longitude') is-invalid @enderror" >
-              @error('longitude')
-              <div class="invalid-feedback">
-                  {{ $message }}
-              </div>
-              @enderror
+          <div class="row">
+            <div class="col-6">
+                <div class="form-group" hidden>
+                    <label for="longitude" class="ml-1">Longitude :</label>
+                    {{-- <p id="labelLongitude">-</p> --}}
+                    <input type="text" id="longitude" class="form-control  @error('longitude') is-invalid @enderror" name="longitude" placeholder="longitude..." value="{{old('longitude')}}" readonly hidden>
+                    @error('longitude')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group" hidden>
+                    <label for="latitude" class="ml-1">Latitude :</label>
+                    {{-- <p id="labelLatitude">-</p> --}}
+                    <input type="text" id="latitude" class="form-control  @error('latitude') is-invalid @enderror" name="latitude" placeholder="Latitude..." value="{{old('latitude')}}" readonly hidden>
+                    @error('latitude')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </div>
+            </div>
         </div>
-
         <div class="form-group">
-            <label class="text-black" for="no_hp">Latitude</label>
-            <input type="text"
-                id="latitude"
-                type="number" name="latitude" required
-                class="form-control @error('latitude') is-invalid @enderror" >
-              @error('latitude')
-              <div class="invalid-feedback">
-                  {{ $message }}
-              </div>
-              @enderror
+            <label for="location" class="ml-1">Pilih Lokasi :</label>
+            <div id="map"></div>
         </div>
 
           <div class="form-group">
