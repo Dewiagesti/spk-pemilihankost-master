@@ -14,11 +14,11 @@
                             <div class="form-group">
                                 <label>Harga Kost</label>
                                 <input type="text" id="price_kost" name="harga" class="form-control" placeholder="">
-                            </div>  
+                            </div>
                             <div class="form-group">
                                 <label>Jarak Kost</label>
                                 <input type="number" id="distance" name="jarak" class="form-control" placeholder="">
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label>Panjang dan lebar Kost</label>
                                 <select name="panjang_lebar_kamar" id="panjang_lebar_kamar" class="form-control" id="location">
@@ -54,6 +54,7 @@
                             <div class="form-group">
                                 <label>Fasilitas Kost</label>
                                 <input type="text" name="fasilitas" id="facility" class="form-control" placeholder="">
+                                <small class="text-muted">Contoh: Kamar Mandi dalam, Kasur, Lemari dan wifi dll...</small>
                             </div>
                             <div class="form-group">
                                 <label>Kebersihan Kost</label>
@@ -89,7 +90,37 @@
                                 </select>
                             </div>
                         </div>
-                    </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" hidden>
+                                <label for="longitude" class="ml-1">Longitude :</label>
+                                {{-- <p id="labelLongitude">-</p> --}}
+                                <input type="text" id="longitude" class="form-control  @error('longitude') is-invalid @enderror" name="longitude" placeholder="longitude..." value="{{old('longitude')}}" readonly hidden>
+                                @error('longitude')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group" hidden>
+                                <label for="latitude" class="ml-1">Latitude :</label>
+                                {{-- <p id="labelLatitude">-</p> --}}
+                                <input type="text" id="latitude" class="form-control  @error('latitude') is-invalid @enderror" name="latitude" placeholder="Latitude..." value="{{old('latitude')}}" readonly hidden>
+                                @error('latitude')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location" class="ml-1">Pilih Lokasi :</label>
+                        <div id="map"></div>
+                    </div>
                     <div class="form-group">
                         <label>Alamat Kost</label>
                         <textarea  cols="30" name="alamat" readonly id="address" rows="5" class="form-control">{{ Auth::user()->alamat }}</textarea>
@@ -104,16 +135,16 @@
                         <input type="file" class="form-control" id="gambarKamarMandi" name="gambar_kamar_mandi" >
                         <img src="" id="bathroom_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
-                                        
+
                     <div class="form-group">
                         <label>Gambar Kamar Tampak Depan</label>
                         <input type="file" class="form-control" id="gambarTampakDepan" name="gambar_tampak_depan" >
                         <img src="" id="front_view_image" width="150px" height="150px" alt="Gambar Defaul">
                     </div>
-                    
+
                         <button class="btn btn-primary w-100" id="btn-submit" {{ ($kostByUserMitra == null) ? '' : 'disabled'  }}>Submit</button>
-                    
-                    
+
+
                 </form>
             </div>
         </div>
@@ -237,7 +268,7 @@
                     $.ajax({
                         type: 'GET',
                         url: '/mitra/kost/'+id+'/edit',
-                        dataType: 'json', 
+                        dataType: 'json',
                         error: function(xhr, status, error) { console.log(xhr.responseText); },
                         success: function(response) {
                             res = response.data;

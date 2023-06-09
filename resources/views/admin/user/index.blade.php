@@ -2,9 +2,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Datatable Mitra</h4>
+                <h4 class="card-title">Datatable User</h4>
             </div>
             <div class="card-body">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table id="example" class="display" style="width: 100%">
                         <thead>
