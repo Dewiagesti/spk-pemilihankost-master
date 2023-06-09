@@ -96,7 +96,7 @@
                                 <td>{{ $item->total }}</td>
                                 <td class="d-flex align-item-center">
                                     <a href="#" data-toggle="tooltip"  data-id="{{ $item->id }}" data-original-title="Edit"  class="edit btn btn-primary text-center editProduct">Detail</a>
-                                    <a href="https://wa.me/{{ $item->user->no_hp }}" class="btn btn-success">Pesan Sekarang</a>
+                                    <a href="https://wa.me/{{ $item->user->no_hp }}" class="btn btn-success disabled">Pesan Sekarang</a>
                                 </td>
                             </tr>
 
