@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('normalizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kost_id')->constrained( 'boarding_houses')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->float('harga');
-            $table->float('jarak');
-            $table->float('fasilitas');
-            $table->float('panjang_lebar_kamar');
-            $table->float('keamanan');
-            $table->float('kebersihan');
-            $table->float('lokasi');
-            $table->float('daerah_sekitar');
+            $table->string('harga', 20);
+            $table->string('jarak', 20);
+            $table->string('fasilitas', 20);
+            $table->string('panjang_lebar_kamar', 20);
+            $table->string('keamanan', 20);
+            $table->string('kebersihan', 20);
+            $table->string('lokasi', 20);
+            $table->string('daerah_sekitar', 20);
             $table->timestamps();
         });
     }

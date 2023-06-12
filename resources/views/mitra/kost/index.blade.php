@@ -119,7 +119,7 @@
                     </div>
                     <div class="form-group">
                         <label for="location" class="ml-1">Pilih Lokasi :</label>
-                        <div id="map"></div>
+                        <div id="map" style=""></div>
                     </div>
                     <div class="form-group">
                         <label>Alamat Kost</label>
