@@ -28,42 +28,43 @@
                         </select>
                     </div>
             </div>
+
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <div class="form-group">
+                    <label>Harga indeKos</label>
+                    <select name="harga" id="harga" class="form-control">
+                    <option value="" >Pilih salah satu</option>
+                        <option value="250,299">250 - 299</option>
+                        <option value="300,349">300 - 349</option>
+                        <option value="350,459">350 - 459</option>
+                        <option value="460,499">460 - 499</option>
+                        <option value="500">>500</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 mb-4 mb-lg-0">
+                <div class="form-group">
+                    <label>Jarak indeKos</label>
+                    <select name="jarak" id="jarak" class="form-control">
+                    <option value="">Pilih salah satu</option>
+                        <option value="150,350">150m - 350m</option>
+                        <option value="360,450">360m - 450m</option>
+                        <option value="460,850">460m - 850m</option>
+                        <option value="960,999">960m - 1km</option>
+                        <option value="1000">1km</option>
+                    </select>
+                </div>
+            </div> 
+
+
                 <div class="col-lg-3 mb-4 mb-lg-0">
-                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <button type="submit" class="btn btn-primary">Hitung</button>
                     <button type="button" id="reset-filter" class="btn btn-danger">Reset</button>
                 </div>
             </form>
-       
-                    {{-- <div class="col-lg-3 mb-4 mb-lg-0">
-                        <div class="form-group">
-                            <label>Harga indeKos</label>
-                            <select name="harga" id="harga" class="form-control">
-                            <option value="" >Pilih salah satu</option>
-                                <option value="250,299">250 - 299</option>
-                                <option value="300,349">300 - 349</option>
-                                <option value="350,459">350 - 459</option>
-                                <option value="460,499">460 - 499</option>
-                                <option value="500">>500</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 mb-4 mb-lg-0">
-                        <div class="form-group">
-                            <label>Jarak indeKos</label>
-                            <select name="jarak" id="jarak" class="form-control">
-                            <option value="">Pilih salah satu</option>
-                                <option value="150,350">150m - 350m</option>
-                                <option value="360,450">360m - 450m</option>
-                                <option value="460,850">460m - 850m</option>
-                                <option value="960,999">960m - 1km</option>
-                                <option value="1000">1km</option>
-                            </select>
-                        </div>
-                    </div> --}}
-
-                   
-                
-          
+                 
 
          <!-- /.col-lg-3 -->
         <div class="col-lg-12 mb-4">
@@ -104,11 +105,13 @@ $(function(){
                     url: "{{ route('fetch.kosts') }}",
                     data: function(d){
                         d.jenis_kost = $('#jenis_kost').val();
-                        console.log(d.jenis_kost);
-                        // d.jarak = $('#jarak').val();
+                        d.harga = $('#harga').val();
+                        d.jarak = $('#jarak').val();
 
                         if ($('#jenis_kost').val() === '') {
                             delete d.jenis_kost;
+                            delete d.harga;
+                            delete d.jarak;
                         }
                     }
                 },
@@ -116,8 +119,8 @@ $(function(){
                     { data: 'nama_kost' },
                     { data: 'jenis_kost', name: 'jenis_kost' },
                     { data: 'alamat'},
-                    { data: 'jarak'},
-                    { data: 'harga'},
+                    { data: 'jarak', name: 'jarak'},
+                    { data: 'harga', name: 'harga'},
                     { data: 'panjang_lebar_kamar'},
                     { data: 'keamanan'},
                     { data: 'kebersihan'}
@@ -133,7 +136,11 @@ $(function(){
 
     $('#reset-filter').on('click', function() {
         $('#filter-form')[0].reset(); 
-        $('#jenis_kost').val('');// Mengosongkan nilai input filter
+        $('#jenis_kost').val('');
+        $('#harga').val('');
+        $('#jarak').val('');
+        
+        // Mengosongkan nilai input filter
         datatables.draw(); // Menggambar ulang tabel dengan data tanpa filter
     });
 

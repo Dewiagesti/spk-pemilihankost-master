@@ -13,12 +13,16 @@ class RecomendationController extends Controller
         if ($request->ajax()) {
             $kosts = Kost::select('*');
 
-            if ($request->has('jenis_kost')) {
+           
+            if ($request->has('jenis_kost') && $request->has('harga') && $request->has('jarak')) {
                 $jenisKost = $request->input('jenis_kost');
-                // $harga = $request->input('harga');
+                $harga = explode(',', $request->input('harga'));
+                $jarak = explode(',', $request->input('jarak'));
 
                 // Tambahkan kondisi WHERE untuk filter jarak
-                $kosts->where('jenis_kost', $jenisKost);
+                $kosts->where('jenis_kost', $jenisKost)
+                        ->whereBetween('harga', $harga)
+                        ->whereBetween('jarak', $jarak);
             }
 
             return DataTables::of($kosts)
