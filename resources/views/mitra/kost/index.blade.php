@@ -123,7 +123,7 @@
                     </div>
                     <div class="form-group">
                         <label>Alamat Kost</label>
-                        <textarea  cols="30" name="alamat" readonly id="address" rows="5" class="form-control">{{ Auth::user()->alamat }}</textarea>
+                        <textarea  cols="30" name="alamat"  id="address" rows="5" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Gambar Kamar</label>

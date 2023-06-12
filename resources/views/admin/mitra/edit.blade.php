@@ -30,13 +30,7 @@
                         <input type="number" class="form-control input-default" name="no_hp"  value="{{ $user->no_hp }}" placeholder="input-rounded">
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="10" name="alamat" class="form-control input-default">{{ $user->alamat }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="number" class="form-control" name="latitude" value="{{ $user->latitude }}" placeholder="input-rounded">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" class="form-control" name="longitude" value="{{ $user->longitude }}" placeholder="input-rounded">
+                        <textarea cols="30" rows="10" name="alamat" class="form-control input-default">{{ $user->alamat }}</textarea>
                     </div>
             </div>
         </div>
