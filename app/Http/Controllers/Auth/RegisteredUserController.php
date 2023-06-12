@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        if ($user->role == 2) {
+        if ($user->role === 2) {
             return redirect('/mitra/login');
         }else {
             return redirect('/login');

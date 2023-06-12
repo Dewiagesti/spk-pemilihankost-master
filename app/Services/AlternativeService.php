@@ -25,7 +25,6 @@ class AlternativeService
     public static function createAlternativeTable(Request $request)
     {
 
-
         $createBoardingHouse = Kost::updateOrCreate(
             ['user_id' => Auth::user()->id],
             [
@@ -43,15 +42,16 @@ class AlternativeService
             'lokasi'        => request('lokasi'),
             'kebersihan'    => request('kebersihan'),
             'daerah_sekitar'=> request('daerah_sekitar'),
-            'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar'),
-            'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi'),
-            'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
+            // 'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar'),
+            // 'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi'),
+            // 'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
         ]);
 
-        $createAlternative = Alternative::updateOrCreate(['kost_id' => $createBoardingHouse->id],[
-            'kost_id' => $createBoardingHouse->id,
+        Alternative::updateOrCreate(['kost_id' => $createBoardingHouse->id],[
+            'kost_id'       => $createBoardingHouse->id,
             'harga'         => static::priceRangeRequest($request),
             'jarak'         => static::priceDistanceRequest($request),
+            // 'jarak'         => $request->jarak,
             'fasilitas'     => static::facilityRequest(str_replace(',','|', $request->fasilitas)),
             'lokasi'        => static::locationRequest($request),
             'panjang_lebar_kamar' => static::roomSizeRequest($request),
@@ -133,34 +133,31 @@ class AlternativeService
             return $reqRange = 5;
         }
 
-        return $reqRange;
     }
 
-    public static function priceDistanceRequest(Request $request)
+    public static function priceDistanceRequest()
     {
-        $reqRange = $request->jarak;
-
-        if ($reqRange > 150 && $reqRange < 350) {
-            return $reqRange = 1;
+        $reqDistance = request('jarak');
+        
+        if ($reqDistance > 150 && $reqDistance <= 350) {
+            return $reqDistance = 1;
         }
 
-        if ($reqRange > 360 && $reqRange < 450) {
-            return $reqRange = 2;
+        if ($reqDistance > 351 && $reqDistance <= 450) {
+            return $reqDistance = 2;
         }
 
-        if ($reqRange > 460 && $reqRange < 850) {
-            return $reqRange = 3;
+        if ($reqDistance > 451 && $reqDistance <= 850) {
+            return $reqDistance = 3;
         }
 
-        if ($reqRange > 960 && $reqRange <= 100000) {
-            return $reqRange = 4;
+        if ($reqDistance > 851 && $reqDistance <= 100000) {
+            return $reqDistance = 4;
         }
 
-        if ($reqRange > 100000 ) {
-            return $reqRange = 5;
+        if ($reqDistance > 100000 ) {
+            return $reqDistance = 5;
         }
-
-        return $reqRange;
     }
 
     public static function securityRequest(Request $request)

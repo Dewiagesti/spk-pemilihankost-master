@@ -82,7 +82,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($rows as $item)
+                        @foreach ($rows as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->kost->nama_kost }}</td>
@@ -181,11 +181,11 @@
                                         </div>
                                     </div>
                                 </div>
-                        @empty
-                            <tr>
+                        {{-- @empty --}}
+                            {{-- <tr>
                                 <td colspan="10" class="text-center">Maaf Tidak dapat ditemukan</td>
-                            </tr>
-                        @endforelse
+                            </tr> --}}
+                        @endforeach
                     </tbody>
                 </table>           
             </div>
