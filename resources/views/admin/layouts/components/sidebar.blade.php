@@ -6,7 +6,7 @@
             @endphp
             </li>
             <li><a class="" href="{{ $link }}dashboard" aria-expanded="false"><i
-                        class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                        class="icon icon-single-04"></i><span class="nav-text"></span></a>
             <li>
             @if(Auth::user()->role == 1)
                     <li><a href="{{ route('user.index') }}">Users</a></li>
