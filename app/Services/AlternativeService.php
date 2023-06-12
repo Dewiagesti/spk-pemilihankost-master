@@ -36,9 +36,9 @@ class AlternativeService
             'lokasi'        => request('lokasi'),
             'kebersihan'    => request('kebersihan'),
             'daerah_sekitar'=> request('daerah_sekitar'),
-            // 'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar'),
-            // 'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi'),
-            // 'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
+            'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar') ?? '',
+            'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi') ?? '',
+            'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan') ?? '',
         ]);
 
         // fungsi ini untuk memanggil fungsi alternativeCreate 

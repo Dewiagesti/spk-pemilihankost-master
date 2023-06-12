@@ -96,7 +96,7 @@
                             <div class="form-group" hidden>
                                 <label for="longitude" class="ml-1">Longitude :</label>
                                 {{-- <p id="labelLongitude">-</p> --}}
-                                <input type="text" id="longitude" class="form-control  @error('longitude') is-invalid @enderror" name="longitude" placeholder="longitude..." value="{{old('longitude')}}" readonly hidden>
+                                <input type="hidden" id="longitude" class="form-control  @error('longitude') is-invalid @enderror" name="longitude" placeholder="longitude..." value="{{ Auth::user()->longitude }}" readonly hidden>
                                 @error('longitude')
                                     <div class="invalid-feedback">
                                         {{$message}}
@@ -108,7 +108,7 @@
                             <div class="form-group" hidden>
                                 <label for="latitude" class="ml-1">Latitude :</label>
                                 {{-- <p id="labelLatitude">-</p> --}}
-                                <input type="text" id="latitude" class="form-control  @error('latitude') is-invalid @enderror" name="latitude" placeholder="Latitude..." value="{{old('latitude')}}" readonly hidden>
+                                <input type="hidden" id="latitude" class="form-control  @error('latitude') is-invalid @enderror" name="latitude" placeholder="Latitude..." value="{{old('latitude')}}" readonly hidden>
                                 @error('latitude')
                                     <div class="invalid-feedback">
                                         {{$message}}

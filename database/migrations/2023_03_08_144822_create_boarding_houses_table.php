@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('harga', 20);
             $table->string('fasilitas');
             $table->string('panjang_lebar_kamar', 100);
-            $table->enum('keamanan',['Sangat Aman','Aman', 'Cukup aman', 'Kurang Aman','Tidak Aman']);
+            $table->enum('keamanan',['Sangat Aman','Aman', 'Cukup Aman', 'Kurang Aman','Tidak Aman']);
             $table->string('kebersihan', 50);
             $table->string('lokasi', 150);
             $table->string('daerah_sekitar', 150);
