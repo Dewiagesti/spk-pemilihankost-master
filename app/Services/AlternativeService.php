@@ -15,16 +15,10 @@ use Illuminate\Support\Str;
 class AlternativeService
 {
 
-    private $user;
-
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
     public static function createAlternativeTable(Request $request)
     {
 
+        // Padad bagian ini berfungsi untuk menambahkan data maupun mengupdate data ke tabel boarding_houses
         $createBoardingHouse = Kost::updateOrCreate(
             ['user_id' => Auth::user()->id],
             [
@@ -47,19 +41,28 @@ class AlternativeService
             // 'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
         ]);
 
+        // fungsi ini untuk memanggil fungsi alternativeCreate 
+        static::alternativeCreate($createBoardingHouse, $request);
+    }
+
+
+    // fungsi ini untuk proses create alternative pada database
+    public static function alternativeCreate($createBoardingHouse, Request $request) 
+    {
+
         Alternative::updateOrCreate(['kost_id' => $createBoardingHouse->id],[
             'kost_id'       => $createBoardingHouse->id,
-            'harga'         => static::priceRangeRequest($request),
-            'jarak'         => static::priceDistanceRequest($request),
-            // 'jarak'         => $request->jarak,
-            'fasilitas'     => static::facilityRequest(str_replace(',','|', $request->fasilitas)),
-            'lokasi'        => static::locationRequest($request),
-            'panjang_lebar_kamar' => static::roomSizeRequest($request),
-            'keamanan'      => static::securityRequest($request),
-            'kebersihan' => static::cleanlinessRequest($request),
-            'daerah_sekitar' => static::areaRequest($request)
+            'harga'         => static::priceRangeRequest(intval($request['harga'])),
+            'jarak'         => static::priceDistanceRequest($request['jarak']),
+            'fasilitas'     => static::facilityRequest(str_replace(',','|', $request['fasilitas'])),
+            'lokasi'        => static::locationRequest($request['lokasi']),
+            'panjang_lebar_kamar' => static::roomSizeRequest($request['panjang_lebar_kamar']),
+            'keamanan'      => static::securityRequest($request['keamanan']),
+            'kebersihan' => static::cleanlinessRequest($request['kebersihan']),
+            'daerah_sekitar' => static::areaRequest($request->daerah_sekitar ?? $request['daerah_sekitar'])
         ]);
 
+        // Fungsi ini untuk mendapatkan Nilai Normalisasi
         foreach (Alternative::get() as $key ) {
 
             Normalization::updateOrCreate(
@@ -76,7 +79,9 @@ class AlternativeService
                 ]
             );
         }
+
     }
+
 
     public static function facilityRequest($sentences)
     {
@@ -109,23 +114,22 @@ class AlternativeService
     }
 
 
-    public static function priceRangeRequest()
+    public static function priceRangeRequest($reqRange)
     {
-        $reqRange = request('harga');
 
-        if ($reqRange > 250 && $reqRange < 299) {
+        if ($reqRange >= 250 && $reqRange <= 299) {
             return $reqRange = 1;
         }
 
-        if ($reqRange > 300 && $reqRange < 349) {
+        if ($reqRange >= 300 && $reqRange <= 349) {
             return $reqRange = 2;
         }
 
-        if ($reqRange > 350 && $reqRange < 459) {
+        if ($reqRange >= 350 && $reqRange <= 459) {
             return $reqRange = 3;
         }
 
-        if ($reqRange > 460 && $reqRange <= 500) {
+        if ($reqRange >= 460 && $reqRange <= 500) {
             return $reqRange = 4;
         }
 
@@ -135,11 +139,10 @@ class AlternativeService
 
     }
 
-    public static function priceDistanceRequest()
+    public static function priceDistanceRequest($reqDistance)
     {
-        $reqDistance = request('jarak');
         
-        if ($reqDistance > 150 && $reqDistance <= 350) {
+        if ($reqDistance >= 150 && $reqDistance <= 350) {
             return $reqDistance = 1;
         }
 
@@ -151,19 +154,18 @@ class AlternativeService
             return $reqDistance = 3;
         }
 
-        if ($reqDistance > 851 && $reqDistance <= 100000) {
+        if ($reqDistance >= 851 && $reqDistance <= 900) {
             return $reqDistance = 4;
         }
 
-        if ($reqDistance > 100000 ) {
+        if ($reqDistance > 901 ) {
             return $reqDistance = 5;
         }
     }
 
-    public static function securityRequest(Request $request)
+    public static function securityRequest($reqSecurity)
     {
-        $reqSecurity = $request->keamanan;
-
+      
         switch ($reqSecurity) {
             case 'Tidak Aman':
                    return $reqSecurity = 1;
@@ -187,9 +189,8 @@ class AlternativeService
 
     }
 
-    public static function cleanlinessRequest(Request $request)
+    public static function cleanlinessRequest($reqCleanliness)
     {
-        $reqCleanliness = $request->kebersihan;
 
         switch ($reqCleanliness) {
             case 'Tidak Bersih':
@@ -213,10 +214,8 @@ class AlternativeService
         }
     }
 
-    public static function locationRequest(Request $request)
+    public static function locationRequest($reqLocation)
     {
-        $reqLocation = $request->lokasi;
-
         switch ($reqLocation) {
             case 'Tidak Strategis':
                    return $reqLocation = 5;
@@ -239,9 +238,8 @@ class AlternativeService
         }
     }
 
-    public static function roomSizeRequest(Request $request)
+    public static function roomSizeRequest($reqRoomSize)
     {
-        $reqRoomSize = $request->panjang_lebar_kamar;
 
         switch ($reqRoomSize) {
             case '2 x 3':
@@ -265,9 +263,8 @@ class AlternativeService
         }
     }
 
-    public static function areaRequest(Request $request)
+    public static function areaRequest($reqArea)
     {
-        $reqArea = $request->daerah_sekitar;
 
         switch ($reqArea) {
             case 'Dekat dengan kampus':

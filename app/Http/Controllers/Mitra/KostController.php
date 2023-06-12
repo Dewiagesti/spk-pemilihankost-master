@@ -37,7 +37,6 @@ class KostController extends Controller
     public function store(Request $request)
     {
         AlternativeService::createAlternativeTable($request);
-
     }
 
     /**

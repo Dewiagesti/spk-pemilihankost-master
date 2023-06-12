@@ -2,141 +2,54 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alternative;
 use App\Models\Kost;
+use App\Models\Normalization;
+use App\Services\AlternativeService;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class KostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    protected $kosts = [
-            [
-                'kost_id'   => 2,
-                'nama_kost' => 'Bak Yuli',
-                'jenis_kost' => 'Putra',
-                'alamat' => 'Gang Pabrik',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur, Lemari, Parkiran, Kamar Mandi Luar',
-                'panjang_kamar' => 2.5,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Cukup Aman',
-                'kebersihan' => 'bersih'
-            ],
-            [
-                'kost_id'   => 3,
-                'nama_kost' => 'Kos Putra',
-                'jenis_kost' => 'Putra',
-                'alamat' => 'Gang Penjara',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur,Lemari, Kamar Mandi Luar, Parkiran, Wifi',
-                'panjang_kamar' => 2.5,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'bersih'
-            ],
-            [
-                'kost_id' => 4,
-                'nama_kost' => 'Kos Annisa',
-                'jenis_kost' => 'Putra',
-                'alamat' => 'Polres Bondowoso',
-                'harga' => 400000,
-                'fasilitas' => 'Kasur, Lemari, Parkiran, Kamar Mandi Luar,Wifi, Tempat Cuci Piring',
-                'panjang_kamar' => 3,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Aman',
-                'kebersihan' => 'bersih'
-            ],
-            [
-                'kost_id' => 5,
-                'nama_kost' => 'Kos Haji Lutfi',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Polres Bondowoso',
-                'harga' => 500000,
-                'fasilitas' => 'Kasur, Lemari, Kipas , Meja Belajar, Wifi, Dapur, Jemuran, Kulkas, Parkiran, Mesih cuci',
-                'panjang_kamar' => 3,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'Sangat Bersih'
-            ],
-            [
-                'kost_id' => 6,
-                'nama_kost' => 'Kos Busigik',
-                'jenis_kost' => 'Putra',
-                'alamat' => 'Polres Bondowoso',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur,Lemari',
-                'panjang_kamar' => 2,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Cukup Aman',
-                'kebersihan' => 'Bersih'
-            ],
-            [
-                'kost_id' => 7,
-                'nama_kost' => 'Kos Bu Joko',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Gang Cinta',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur, Lemari, Dapur, Wifi, Kamar Mandi Luar',
-                'panjang_kamar' => 2.7,
-                'lebar_kamar' => 2.7,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'Bersih'
-            ],
-            [
-                'kost_id' => 8,
-                'nama_kost' => 'Kos Sakinnah',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Gang Cinta',
-                'harga' => 325000,
-                'fasilitas' => 'Kasur, Lemari, Wifi, Dapur, Kamar mandi luar, Tampat jemuran, Parkiran',
-                'panjang_kamar' => 2.5,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'Bersih'
-            ],
-            [
-                'kost_id' => 9,
-                'nama_kost' => 'Kos Janur',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Dabasah',
-                'harga' => 500000,
-                'fasilitas' => 'Kasur, Lemari, Wifi, Dapur, Kamar mandi luar, Tampat jemuran, Parkiran,Kipas angin, kulkas',
-                'panjang_kamar' => 3,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'Bersih'
-            ],
-            [
-                'kost_id' => 10,
-                'nama_kost' => 'Kos Darusalam',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Kotakulon',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur, lemari, Wifi, Kamar mandi luar, Ruang Tamu, Parkiran, Kulkas',
-                'panjang_kamar' => 2.5,
-                'lebar_kamar' => 2.7,
-                'keamanan' => 'Sangat Aman',
-                'kebersihan' => 'Bersih'
-            ],
-            [
-                'kost_id' => 11,
-                'nama_kost' => 'Kos Salsabila',
-                'jenis_kost' => 'Putri',
-                'alamat' => 'Kotakulon',
-                'harga' => 350000,
-                'fasilitas' => 'Kasur,Lemari Kamar mandi dalam, Parkiran, Dapur, Wifi, Tempat Jemuran',
-                'panjang_kamar' => 3,
-                'lebar_kamar' => 3,
-                'keamanan' => 'Aman',
-                'kebersihan' => 'Bersih'
-            ],
-
-        ];
-
     public function run(): void
     {
-       foreach ($this->kosts as $kost) { Kost::create($kost); }
+        $json = File::get(database_path('data/kost.json'));
+        $kosts = json_decode($json, true);
+
+        
+        foreach ($kosts as $kost) {
+            $request = new Request($kost); // Buat objek Request dengan data kost
+            $createBoardingHouse = Kost::updateOrCreate(
+                
+                ['user_id' => $request->user_id],
+                [
+                    'user_id'       => $request->user_id,
+                    'nama_kost'     => $request->nama_kost,
+                    'jenis_kost'    => $request->jenis_kost,
+                    'alamat'        => $request->alamat,
+                    'latitude'      => $request->latitude,
+                    'longitude'     => $request->longitude,
+                    'jarak'         => $request->jarak,
+                    'harga'         => (int) str_replace('.', '', $request->harga),
+                    'fasilitas'     => $request->fasilitas,
+                    'panjang_lebar_kamar' => $request->panjang_lebar_kamar,
+                    'keamanan'      => $request->keamanan,
+                    'lokasi'        => $request->lokasi,
+                    'kebersihan'    => $request->kebersihan,
+                    'daerah_sekitar'=> $request->daerah_sekitar,
+                    // 'gambar_kamar'  => FileUpload::uploadFile($request->gambar_kamar, '/kamar'),
+                    // 'gambar_kamar_mandi'  => FileUpload::uploadFile($request->gambar_kamar_mandi, '/kamar-mandi'),
+                    // 'gambar_tampak_depan'  => FileUpload::uploadFile($request->gambar_tampak_depan, '/kamar-tampak-depan'),
+                ]
+            );
+
+           AlternativeService::alternativeCreate($createBoardingHouse, $request);
+     
+        }
     }
 }
