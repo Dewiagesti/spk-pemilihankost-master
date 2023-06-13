@@ -26,4 +26,8 @@ class Normalization extends Model
     {
         return $this->hasOne(Kost::class, 'id', 'kost_id');
     }
+
+    public function user() : HasOne  {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
