@@ -84,7 +84,9 @@
                 </thead>
                 <tbody>
                 </tbody>
-            </table>           
+            </table> 
+            {{-- Memanggin modal --}}
+            @include('commons/modal-detail-recomendation')          
             </div>
         </div>
       </div> <!-- /.row -->
@@ -98,7 +100,7 @@
 $(function(){
 
 
-    // Datatables 
+    // Datatables untuk menampilkan semua data 
     var datatables = $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -146,18 +148,6 @@ $(function(){
         datatables.draw(); // Menggambar ulang tabel dengan data tanpa filter
     });
 
-    // 
-    $('#jenkel').on('change', function () {
-        var gender = $(this).val()
-        $.ajax({
-            url: '/api/gender/'+gender,
-            type: 'GET',
-            data: {'kos': gender},
-            succes: function(res) {
-                console.log(res);
-            }
-        })
-    })
 
 
     // Fungsi untuk menampilkan detail
