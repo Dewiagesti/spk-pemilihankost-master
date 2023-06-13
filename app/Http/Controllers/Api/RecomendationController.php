@@ -11,7 +11,12 @@ use DataTables;
 class RecomendationController extends Controller
 {
     public function fetchAllKost(Request $request) {
+
         if ($request->ajax()) {
+            
+            /*
+            Pada query ini mereleasikan pada tabel kost dan juga user
+            */ 
             $kosts = Normalization::with(['kost', 'user']);
 
             // Pada bagian ini untuk mengeksekusi filter
@@ -28,8 +33,11 @@ class RecomendationController extends Controller
                 });
             }
     
+            // Dapatkan semua data yang telah dipilih
             $kosts = $kosts->get();
+
     
+            // Kemudian kita melakukan perulangan dengan map function
             $data = $kosts->map(function ($kost) {
                 // Hitung skor SAW
                 $totalScore = ($kost->harga * 7) +
@@ -41,6 +49,7 @@ class RecomendationController extends Controller
                     ($kost->lokasi * 2) +
                     ($kost->daerah_sekitar * 1);
     
+                    // Buat kode json
                 return [
                     'id' => $kost->id,
                     'nama_kost' => $kost->kost->nama_kost,
@@ -54,8 +63,12 @@ class RecomendationController extends Controller
                     'total_score' => $totalScore,
                     'action' => '<button data-toggle="tooltip" data-original-title="Edit" class="edit btn btn-primary editProduct" data-id="'.$kost->id.'" >Detail</button><a href="https://wa.me/'.$kost->kost->user->no_hp.'" class="btn btn-success">Pesan sekarang</a>',
                 ];
-            })->sortByDesc('total_score');
+            });
     
+            // Data yang ditampilkan dengan total tertinggi
+            $data = $data->sortByDesc('total_score')->values();
+
+            // Buatkan data berupa json
             return response()->json(['data' => $data]);
         }
 
