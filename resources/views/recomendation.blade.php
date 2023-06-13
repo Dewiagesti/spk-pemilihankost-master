@@ -79,6 +79,7 @@
                         <th>Panjang dan Lebar Kamar</th>
                         <th>Keamanan</th>
                         <th>Kebersihan</th>
+                        <th>Option</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -123,7 +124,8 @@ $(function(){
                     { data: 'harga', name: 'harga'},
                     { data: 'panjang_lebar_kamar'},
                     { data: 'keamanan'},
-                    { data: 'kebersihan'}
+                    { data: 'kebersihan'},
+                    { data: 'action'}
                 ]
             });
 
