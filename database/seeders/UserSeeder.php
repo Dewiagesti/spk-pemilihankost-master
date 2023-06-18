@@ -25,5 +25,6 @@ class UserSeeder extends Seeder
         User::create($user);
 
         User::factory()->count(10)->sequence(fn () => ['role' => 2])->create();
+        
     }
 }
