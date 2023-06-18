@@ -23,13 +23,19 @@ class RecomendationController extends Controller
             if ($request->has('jenis_kost') && $request->has('harga') && $request->has('jarak')) {
                 $jenisKost = $request->input('jenis_kost');
                 $harga = explode(',', $request->input('harga'));
-                $jarak = explode(',', $request->input('jarak'));
-    
+                $jarak = explode(',', $request->input('jarak')) ?? $request->input('jarak');
+
                 // Tambahkan kondisi WHERE untuk filter semuanya
                 $kosts->whereHas('kost', function($query) use ($jenisKost, $harga, $jarak){
                     $query->where('jenis_kost', $jenisKost)
                     ->whereBetween('harga', $harga)
-                    ->whereBetween('jarak', $jarak);
+                    ->where(function ($query) use ($jarak) {
+                        if (count($jarak) === 1) {
+                            $query->where('jarak', $jarak[0]);
+                        } elseif (count($jarak) === 2) {
+                            $query->whereBetween('jarak', $jarak);
+                        }
+                    });
                 });
             }
     
