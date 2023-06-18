@@ -112,7 +112,7 @@
         "daerah_sekitar": "Dekat dengan kampus"
     },
     {
-        "user_id": 8,
+        "user_id": 9,
         "nama_kost":"Kost Janur",
         "jenis_kost": "Putri",
         "alamat": "Dabasah",
@@ -128,7 +128,7 @@
         "daerah_sekitar": "Dekat dengan Jalan Utama"
     },
     {
-        "user_id": 9,
+        "user_id": 10,
         "nama_kost":"Kost darussalam",
         "jenis_kost": "Putri",
         "alamat": "kutakulon",
@@ -144,7 +144,7 @@
         "daerah_sekitar": "Dekat dengan Pembelanjaan"
     },
     {
-        "user_id": 10,
+        "user_id": 11,
         "nama_kost":"Kost salsabillah",
         "jenis_kost": "Putri",
         "alamat": "kutakulon",
