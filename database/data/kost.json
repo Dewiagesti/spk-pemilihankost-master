@@ -126,8 +126,8 @@
         "kebersihan": "Sangat Bersih",
         "lokasi": " Cukup Strategis",
         "daerah_sekitar": "Dekat dengan Jalan Utama"
-        },
-        {
+    },
+    {
         "user_id": 9,
         "nama_kost":"Kost darussalam",
         "jenis_kost": "Putri",
@@ -158,5 +158,5 @@
         "kebersihan": "Bersih",
         "lokasi": "Kurang Strategis",
         "daerah_sekitar": "Dekat dengan Pembelanjaan"
-    },
+    }
 ]
