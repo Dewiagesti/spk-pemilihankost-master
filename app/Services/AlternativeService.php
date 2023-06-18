@@ -68,12 +68,12 @@ class AlternativeService
             Normalization::updateOrCreate(
                 ['kost_id' => $key->kost_id],
                 [
-                    'harga' => $key->harga /  Alternative::max('harga'),
-                    'jarak' => $key->jarak / Alternative::max('jarak'),
                     'fasilitas' => $key->fasilitas / Alternative::max('fasilitas'),
                     'panjang_lebar_kamar' => $key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'),
-                    'keamanan' => Alternative::min('keamanan') / $key->keamanan,
-                    'kebersihan' => Alternative::min('kebersihan') / $key->kebersihan,
+                    'keamanan' => Alternative::max('keamanan') / $key->keamanan,
+                    'kebersihan' => Alternative::max('kebersihan') / $key->kebersihan,
+                    'harga' => $key->harga /  Alternative::min('harga'),
+                    'jarak' => $key->jarak / Alternative::min('jarak'),
                     'lokasi' => Alternative::min('lokasi') / $key->lokasi,
                     'daerah_sekitar' => Alternative::min('daerah_sekitar') / $key->daerah_sekitar
                 ]

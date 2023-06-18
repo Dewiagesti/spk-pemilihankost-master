@@ -36,7 +36,7 @@ Route::prefix('admin')
         
         Route::get('/delete-user/{id}', [UserController::class, 'destroy']);
 
-        Route::get('/mitra', [UserController::class, 'mitra'])->name('mitra.index');
+        Route::get('/mitra', [UserController::class, '  '])->name('mitra.index');
         Route::get('kost', [KostController::class, 'index'])->name('admin.kost');
         Route::get('/kost/{id}', [KostController::class, 'show'])->name('admin.kost.show');     
 });
