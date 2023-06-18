@@ -16,6 +16,7 @@
                     <table id="example" class="display" style="width: 100%">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Alamat</th>
@@ -28,6 +29,7 @@
                         <tbody>
                             @foreach ($userRoleMitra as $user)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->alamat }}</td>
