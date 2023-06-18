@@ -72,9 +72,9 @@
         "longitude": "",
         "jarak": 800,
         "harga": 350,
-        "fasilitas": "Kasur,Lemari,",
+        "fasilitas": "Kasur,Lemari",
         "panjang_lebar_kamar": "2 x 3",
-        "keamanan": "cukup Aman",
+        "keamanan": "Cukup Aman",
         "kebersihan": "Bersih",
         "lokasi": "Strategis",
         "daerah_sekitar": "Dekat dengan Pembelanjaan"
@@ -92,7 +92,7 @@
         "panjang_lebar_kamar": "2,7 x 2,7",
         "keamanan": "Sangat Aman",
         "kebersihan": "Bersih",
-        "lokasi": "sangat Strategis",
+        "lokasi": "Sangat Strategis",
         "daerah_sekitar": "Dekat dengan kampus"
     },
     {
@@ -108,7 +108,7 @@
         "panjang_lebar_kamar": "2,5 x 3",
         "keamanan": "Sangat Aman",
         "kebersihan": "Bersih",
-        "lokasi": "sangat Strategis",
+        "lokasi": "Sangat Strategis",
         "daerah_sekitar": "Dekat dengan kampus"
     },
     {
@@ -124,7 +124,7 @@
         "panjang_lebar_kamar": "3 x 3",
         "keamanan": "Sangat Aman",
         "kebersihan": "Sangat Bersih",
-        "lokasi": " Cukup Strategis",
+        "lokasi": "Cukup Strategis",
         "daerah_sekitar": "Dekat dengan Jalan Utama"
     },
     {

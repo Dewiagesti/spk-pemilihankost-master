@@ -68,14 +68,14 @@ class AlternativeService
             Normalization::updateOrCreate(
                 ['kost_id' => $key->kost_id],
                 [
-                    'fasilitas' => $key->fasilitas / Alternative::max('fasilitas'),
-                    'panjang_lebar_kamar' => $key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'),
-                    'keamanan' => Alternative::max('keamanan') / $key->keamanan,
-                    'kebersihan' => Alternative::max('kebersihan') / $key->kebersihan,
-                    'harga' => $key->harga /  Alternative::min('harga'),
-                    'jarak' => $key->jarak / Alternative::min('jarak'),
-                    'lokasi' => Alternative::min('lokasi') / $key->lokasi,
-                    'daerah_sekitar' => Alternative::min('daerah_sekitar') / $key->daerah_sekitar
+                    'fasilitas'             => round($key->fasilitas / Alternative::max('fasilitas'), 2),
+                    'panjang_lebar_kamar'   => round($key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'), 2),
+                    'keamanan'              => round(Alternative::max('keamanan') / $key->keamanan, 2),
+                    'kebersihan'            => round(Alternative::max('kebersihan') / $key->kebersihan, 2),
+                    'harga'                 => round($key->harga /  Alternative::min('harga'), 2),
+                    'jarak'                 => round($key->jarak / Alternative::min('jarak'), 2),
+                    'lokasi'                => round(Alternative::min('lokasi') / $key->lokasi, 2),
+                    'daerah_sekitar'        => round(Alternative::min('daerah_sekitar') / $key->daerah_sekitar, 2)
                 ]
             );
         }
