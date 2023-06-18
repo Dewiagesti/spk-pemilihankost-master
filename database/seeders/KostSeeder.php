@@ -20,7 +20,7 @@ class KostSeeder extends Seeder
     {
         $json = File::get(database_path('data/kost.json'));
         $kosts = json_decode($json, true);
-
+        
         foreach ($kosts as $kost) {
             $request = new Request($kost); // Buat objek Request dengan data kost
             $createBoardingHouse = Kost::updateOrCreate(
