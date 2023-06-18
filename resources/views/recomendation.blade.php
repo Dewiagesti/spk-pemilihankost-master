@@ -79,6 +79,7 @@
                         <th>Panjang dan Lebar Kamar</th>
                         <th>Keamanan</th>
                         <th>Kebersihan</th>
+                        <th>Total</th>
                         <th>Option</th>
                     </tr>
                 </thead>
@@ -127,6 +128,7 @@ $(function(){
                     { data: 'panjang_lebar_kamar'},
                     { data: 'keamanan'},
                     { data: 'kebersihan'},
+                    { data: 'total_score'},
                     { data: 'action'}
                 ]
             });
