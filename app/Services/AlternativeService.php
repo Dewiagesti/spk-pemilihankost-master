@@ -69,8 +69,7 @@ class AlternativeService
                 ['kost_id' => $key->kost_id],
                 [
                     'fasilitas' => $key->fasilitas / Alternative::max('fasilitas'),
-                    'panjang_lebar_kamar' => $key->panjang_lebar_kamar / Alternative::max('
-                        panjang_lebar_kamar'),
+                    'panjang_lebar_kamar' => $key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'),
                     'keamanan' => Alternative::max('keamanan') / $key->keamanan,
                     'kebersihan' => Alternative::max('kebersihan') / $key->kebersihan,
                     'harga' => $key->harga /  Alternative::min('harga'),
