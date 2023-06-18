@@ -70,10 +70,10 @@ class AlternativeService
                 [
                     'fasilitas'             => round($key->fasilitas / Alternative::max('fasilitas'), 2),
                     'panjang_lebar_kamar'   => round($key->panjang_lebar_kamar / Alternative::max('panjang_lebar_kamar'), 2),
-                    'keamanan'              => round(Alternative::max('keamanan') / $key->keamanan, 2),
-                    'kebersihan'            => round(Alternative::max('kebersihan') / $key->kebersihan, 2),
-                    'harga'                 => round($key->harga /  Alternative::min('harga'), 2),
-                    'jarak'                 => round($key->jarak / Alternative::min('jarak'), 2),
+                    'keamanan'              => round($key->keamanan / Alternative::max('keamanan'), 2),
+                    'kebersihan'            => round($key->kebersihan / Alternative::max('kebersihan'), 2),
+                    'harga'                 => round(Alternative::min('harga') / $key->harga, 2),
+                    'jarak'                 => round(Alternative::min('jarak'),$key->jarak / 2),
                     'lokasi'                => round(Alternative::min('lokasi') / $key->lokasi, 2),
                     'daerah_sekitar'        => round(Alternative::min('daerah_sekitar') / $key->daerah_sekitar, 2)
                 ]
